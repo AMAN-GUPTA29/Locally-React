@@ -1,0 +1,27 @@
+{
+  "name": "locally-react",
+  "version": "1.0.0",
+  "description": "a website for local bussiness on a combined plateform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMAN-GUPTA29/Locally-React.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AMAN-GUPTA29/Locally-React/issues"
+  },
+  "homepage": "https://github.com/AMAN-GUPTA29/Locally-React#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
