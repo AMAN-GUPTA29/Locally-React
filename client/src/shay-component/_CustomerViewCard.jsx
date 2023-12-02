@@ -4,7 +4,7 @@ import './assets/CustomerView.css'
 
 export default ({ photo, title, tag, charge, description }) => {
     return (
-        <div clclassNameass="card mb-3">
+        <div className="card mb-3">
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={photo}

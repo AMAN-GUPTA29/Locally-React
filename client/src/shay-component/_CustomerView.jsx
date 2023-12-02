@@ -1,6 +1,26 @@
 import React from "react";
-import Card from "./_CustomerViewCard";
-import logo from './assets/imgs/1.png'
+// import Card from "./_CustomerViewCard";
+import CardArray from "./_CardArray";
+import logo1 from './assets/imgs/1.png'
+import logo2 from './assets/imgs/2.png'
+
+const dummyData = [
+    {
+        id : 1,
+        photo : logo1,
+        title : "Test 1",
+        tag : "Auto",
+        description : "Auto driver he is",
+        charge : 100,
+    },
+    {
+        id : 2,
+        photo : logo2,
+        title : "Test 2",
+        tag : "Prof",
+        description : "Professor she is",
+    },
+]
 
 export default () => {
     function filter() {
@@ -11,7 +31,6 @@ export default () => {
 
     return (
         <div>
-
             <div className="container mb-5  ">
                 <input type="button" className="border-dark flex-left px-5 py-2 fltr mb-2" onClick={filter} value="Filters" />
                 <br />
@@ -26,7 +45,8 @@ export default () => {
                 </form>
                 <br />
                 <div className="container-fluid">
-                    <Card photo={logo} title={"Test"} tag="Auto" description="Driver" charge={100} />
+                    <CardArray data={dummyData} />
+                    {/* <Card photo={logo1} title={"Test"} tag="Auto" description="Driver" charge={100} /> */}
                 </div>
                 {/* ==============================Buttons============================= */}
                 <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups flex">
