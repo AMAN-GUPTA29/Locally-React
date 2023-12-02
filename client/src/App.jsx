@@ -6,6 +6,7 @@ import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Rootlayout";
 import HomePage from "./pages/homePage";
+import shayRoutes from "./shay-component/shayRoutes";
 // import ContactUs from "./pages/ContactUs/ContactUs";
 // import WishlistPage from "./pages/Wishlist/Wishlist";
 // import Instructor from "./pages/Instructor/Instructor";
@@ -32,6 +33,7 @@ function App() {
       element: <RootLayout />,
       children: [
         { path: "/", element: <HomePage /> },
+        ...shayRoutes,
         // { path: "/ContactUs", element: <ContactUs /> },
         // { path: "/wishlist", element: <WishlistPage /> },
         // { path: "/instructor", element: <Instructor /> },
