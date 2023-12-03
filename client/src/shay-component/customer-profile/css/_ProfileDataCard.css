@@ -1,0 +1,21 @@
+.special {
+    font-family: 'Anton', sans-serif;
+}
+
+.curve-border {
+    border-radius: 8px;
+}
+
+.flex-right {
+    display: flex;
+    margin-left: auto;
+}
+
+.flex-left {
+    display: flex;
+    margin-right: auto;
+}
+
+.hidden {
+    display: none;
+}
