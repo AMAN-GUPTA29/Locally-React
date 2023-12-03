@@ -4,6 +4,7 @@ const myModels = require('./../MongoUtils/models.js');
 
 const route = express.Router();
 route.use(bodyParser.urlencoded({ extended: false }))
+route.use('/data', require('./Customer/routeData.js'))
 
 route.post('/login', (req, res) => {
     const { email, password } = req.body
@@ -19,7 +20,8 @@ route.post('/login', (req, res) => {
                 res.json({
                     status: "OK",
                     code: 200,
-                    message: "Login Authenticated"
+                    message: "Login Authenticated",
+                    redirect: "/customerview"
                 })
             }
             else {
@@ -27,6 +29,7 @@ route.post('/login', (req, res) => {
                     status: "OK",
                     code: 201,
                     message: "Invalid Credentials",
+                    redirect: "/login"
                 })
             }
         })
@@ -35,9 +38,20 @@ route.post('/login', (req, res) => {
             res.json({
                 status: "OK",
                 code: 500,
-                message: err.message
+                message: err.message,
+                redirect: "/login"
             })
         });
+})
+
+route.get('/logout', (req, res) => {
+    if (req.session.userID) res.clearCookie("sessionID");
+    res.json({
+        status: "OK",
+        code: 200,
+        message: "Logout Successful",
+        redirect: '/'
+    })
 })
 
 
