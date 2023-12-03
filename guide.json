@@ -1,0 +1,6 @@
+{
+    "200" : "Successful login / signup / data CRUD",
+    "201" : "Successful login invalid credential",
+    "202" : "Redirect - Not Autherised",
+    "500" : "Server Internal Error"
+}
