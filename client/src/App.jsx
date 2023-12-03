@@ -8,6 +8,7 @@ import RootLayout from "./pages/Rootlayout";
 import HomePage from "./pages/homePage";
 import shayRoutes from "./shay-component/shayRoutes";
 import varunRoutes from "./components/varunRoutes";
+import pranavRoutes from "./pranav-component/pranavRoutes";
 
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Adminbroadcast from "./admin/adminbroadcast";
@@ -44,6 +45,7 @@ function App() {
         { path: "/", element: <HomePage /> },
         ...shayRoutes,
         ...varunRoutes,
+        ...pranavRoutes,
         {path:'/adminland',element: <AdminLand />},
         {path:'/admincustomer',element: <Customer />},
         {path:'/adminworker',element: <Worker />},
