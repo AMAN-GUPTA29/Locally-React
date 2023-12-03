@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Rootlayout";
 import HomePage from "./pages/homePage";
 import shayRoutes from "./shay-component/shayRoutes";
+import varunRoutes from "./components/varunRoutes";
 
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Adminbroadcast from "./admin/adminbroadcast";
@@ -42,6 +43,7 @@ function App() {
       children: [
         { path: "/", element: <HomePage /> },
         ...shayRoutes,
+        ...varunRoutes,
         {path:'/adminland',element: <AdminLand />},
         {path:'/admincustomer',element: <Customer />},
         {path:'/adminworker',element: <Worker />},
