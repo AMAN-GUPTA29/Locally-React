@@ -7,6 +7,7 @@
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+  padding-top: 0;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
   zoom: 90%;
   /* background-color: #333; */
   overflow-x: hidden;
+  padding-top: 0;
 }
 
 /****************GENRAL**************************/
@@ -175,6 +177,12 @@ body {
   padding: 0 3.2rem;
   margin: 0 auto;
 }
+.conntainer {
+  /* 1140px */
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
 
 .grid {
   display: grid;
@@ -204,16 +212,21 @@ body {
   height: 6rem;
 }
 /******************************************/
-.header {
+.heaader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #f8edeb;
 
   /* Because we want header to be sticky later */
-  height: 9.6rem;
+  height: 4rem;
   padding: 0 4.8rem;
   position: relative;
+}
+
+.newhead {
+  margin-top: 0;
+  padding-top: 2%;
 }
 
 .main-nav {
@@ -296,7 +309,7 @@ body {
   font-family: "Playfair Display", serif;
   font-size: 4.4rem;
   line-height: 1.2;
-  margin-bottom: 9.6rem;
+  margin-bottom: 6rem;
 }
 
 .heading-tertiary {
@@ -584,7 +597,7 @@ body {
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.6rem;
+  gap: 1.2rem;
   padding: 1.6rem;
 }
 
@@ -594,9 +607,9 @@ body {
 
 .gallery-item img {
   display: block;
-  width: 90%;
+  width: 85%;
   transition: all 0.4s;
-  height: 90%;
+  height: 85%;
   border-radius: 12px;
 }
 
@@ -609,7 +622,7 @@ body {
   background-color: #333;
   padding: 3.2rem;
   color: #cb997e;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   padding-top: 5%;
 }
 
@@ -642,7 +655,11 @@ body {
 }
 
 .margbutton {
-  margin-left: 40% !important;
+  /* margin-left: 40% !important; */
+}
+
+.padd {
+  width: 220%;
 }
 
 .modify {
@@ -791,6 +808,10 @@ footer .wave#wave4 {
   100% {
     background-position-x: 100rem;
   }
+}
+
+.notflex {
+  display: grid;
 }
 
 /*8***********************/
