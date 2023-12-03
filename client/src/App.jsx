@@ -7,6 +7,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Rootlayout";
 import HomePage from "./pages/homePage";
 import shayRoutes from "./shay-component/shayRoutes";
+
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import Adminbroadcast from "./admin/adminbroadcast";
+// import Navbar from "./admin/navbar";
+import AdminLand from "./admin/adminland";
+import Customer from "./admin/customer";
+import Worker from "./admin/worker";
+
 // import ContactUs from "./pages/ContactUs/ContactUs";
 // import WishlistPage from "./pages/Wishlist/Wishlist";
 // import Instructor from "./pages/Instructor/Instructor";
@@ -34,6 +42,10 @@ function App() {
       children: [
         { path: "/", element: <HomePage /> },
         ...shayRoutes,
+        {path:'/adminland',element: <AdminLand />},
+        {path:'/admincustomer',element: <Customer />},
+        {path:'/adminworker',element: <Worker />},
+        {path:'/adminbroadcast',element: <Adminbroadcast />},
         // { path: "/ContactUs", element: <ContactUs /> },
         // { path: "/wishlist", element: <WishlistPage /> },
         // { path: "/instructor", element: <Instructor /> },
