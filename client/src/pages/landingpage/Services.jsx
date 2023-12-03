@@ -11,7 +11,7 @@ const ServicesSection = () => {
           </h2>
         </div>
 
-        <div className="container grid grid--2-cols grid--center-v">
+        <div className="notflex conntainer grid grid--2-cols grid--center-v ">
           {/* STEP 01 */}
           <div className="step-text-box slidetrans">
             <p className="step-number">01</p>

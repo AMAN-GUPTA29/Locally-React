@@ -25,12 +25,7 @@ const CompanyInfoSection = () => {
         <p className="content-para">
           Locally is a startup that provides local services by connecting
           service providers with customers in their community. The idea for
-          Locally came from a need to help local service providers reach
-          customers online. The founders researched the market, identified
-          in-demand services, and built a platform with a website and mobile
-          app. They used various marketing strategies to promote the platform
-          and partnered with local businesses. Today, Locally is a popular
-          destination for people looking for local services.
+          Locally came from a need to help .
         </p>
       </div>
       <div className="part2">
@@ -52,7 +47,7 @@ const CompanyInfoSection = () => {
               Build partnerships with other local businesses
             </li>
             <li className="list-style">Hire and train more staff</li>
-            <li className="list-style">Focus on sustainability</li>
+            {/* <li className="list-style">Focus on sustainability</li> */}
           </ul>
         </div>
       </div>
