@@ -9,6 +9,7 @@ import HomePage from "./pages/homePage";
 import shayRoutes from "./shay-component/shayRoutes";
 import varunRoutes from "./components/varunRoutes";
 import pranavRoutes from "./pranav-component/pranavRoutes";
+import chaitanyaroutes from "./chaitanya-component/chaitanyaroutes";
 
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Adminbroadcast from "./admin/adminbroadcast";
@@ -16,6 +17,12 @@ import Adminbroadcast from "./admin/adminbroadcast";
 import AdminLand from "./admin/adminland";
 import Customer from "./admin/customer";
 import Worker from "./admin/worker";
+
+// import { Link,Routes,Route } from 'react-router-dom';
+// import { Services } from './Services';
+// import { Layout } from './Layout';
+// import { AddService } from './AddService';
+// import { Footer } from './Footer';
 
 // import ContactUs from "./pages/ContactUs/ContactUs";
 // import WishlistPage from "./pages/Wishlist/Wishlist";
@@ -46,6 +53,7 @@ function App() {
         ...shayRoutes,
         ...varunRoutes,
         ...pranavRoutes,
+        ...chaitanyaroutes,
         {path:'/adminland',element: <AdminLand />},
         {path:'/admincustomer',element: <Customer />},
         {path:'/adminworker',element: <Worker />},
