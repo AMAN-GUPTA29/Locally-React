@@ -1,0 +1,45 @@
+.table-bluprint:hover,
+.head:hover {
+  animation: zoom-in 0.6s forwards;
+  text-shadow: 0 0rem 1rem rgba(200, 187, 187, 0.564);
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  100% {
+    transform: scale(1.02, 1.02);
+  }
+}
+
+.table-bluprint {
+  width: 90%;
+  box-shadow: 0 0rem 1rem rgba(200, 187, 187, 0.564);
+}
+
+.head {
+  color: rgb(241, 74, 13);
+  block-size: fit-content;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.inf{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style:oblique;
+  font-size: large;
+}
+
+.inf-head{
+  text-decoration: none;
+  font-size:larger;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.viewmodal-names{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style:oblique;
+  font-size: larger;
+  margin: 5px;
+}
