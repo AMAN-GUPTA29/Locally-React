@@ -1,0 +1,16 @@
+body {
+}
+
+.loginsignup {
+  align-self: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 200;
+}
+
+.tocent {
+  margin-top: 12%;
+  height: 100%;
+  width: 100%;
+}

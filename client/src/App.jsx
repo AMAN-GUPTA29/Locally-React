@@ -11,12 +11,13 @@ import varunRoutes from "./components/varunRoutes";
 import pranavRoutes from "./pranav-component/pranavRoutes";
 import chaitanyaroutes from "./chaitanya-component/chaitanyaroutes";
 
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Adminbroadcast from "./admin/adminbroadcast";
 // import Navbar from "./admin/navbar";
 import AdminLand from "./admin/adminland";
 import Customer from "./admin/customer";
 import Worker from "./admin/worker";
+import ConsumerLogin from "./pages/consumerlogin";
 
 // import { Link,Routes,Route } from 'react-router-dom';
 // import { Services } from './Services';
@@ -50,14 +51,15 @@ function App() {
       element: <RootLayout />,
       children: [
         { path: "/", element: <HomePage /> },
+        { path: "/consumerlogin", element: <ConsumerLogin></ConsumerLogin> },
         ...shayRoutes,
         ...varunRoutes,
         ...pranavRoutes,
         ...chaitanyaroutes,
-        {path:'/adminland',element: <AdminLand />},
-        {path:'/admincustomer',element: <Customer />},
-        {path:'/adminworker',element: <Worker />},
-        {path:'/adminbroadcast',element: <Adminbroadcast />},
+        { path: "/adminland", element: <AdminLand /> },
+        { path: "/admincustomer", element: <Customer /> },
+        { path: "/adminworker", element: <Worker /> },
+        { path: "/adminbroadcast", element: <Adminbroadcast /> },
         // { path: "/ContactUs", element: <ContactUs /> },
         // { path: "/wishlist", element: <WishlistPage /> },
         // { path: "/instructor", element: <Instructor /> },
