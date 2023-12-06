@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
+
 import { FaUser, FaEnvelope, FaKey, FaGoogle, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -74,6 +77,7 @@ const RegistrationForm = () => {
       })
     // Perform registration logic here
     console.log('Form submitted:', formData);
+    navigate('/sellerview')
   };
 
   return (
