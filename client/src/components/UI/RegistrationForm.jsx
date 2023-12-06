@@ -75,18 +75,18 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="min-h-screen w-[30rem] m-auto flex flex-col items-center justify-center text-black">
+    <div className="min-h-screen w-fit m-auto flex flex-col items-center justify-center text-black">
       <form className="px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
         <h1 className="text-4xl font-bold mb-6 text-center">Seller Registration</h1>
         <div className="flex flex-col items-start mt-1">
-          <label className="text-lg" htmlFor="username">
+          <label className="text-2xl" htmlFor="username">
             Username
           </label>
           <div className="relative">
             <input
               className={`appearance-none border border-black ${
                 errors.username ? 'border-red-500' : 'border-black'
-              } rounded w-[30rem] h-16 py-2 px-3 indent-8 text-xl  focus:outline-none focus:shadow-outline bg-transparent`}
+              } rounded w-[20rem] ml-[2rem] h-16  indent-8 text-2xl  focus:outline-none focus:shadow-outline bg-transparent`}
               id="username"
               name="username"
               type="text"
@@ -99,17 +99,17 @@ const RegistrationForm = () => {
           {errors.username && <p className="text-red-500 text-xs italic">{errors.username}</p>}
         </div>
         <div className="flex flex-col items-start mt-2">
-          <label className="text-lg" htmlFor="email">
+          <label className="text-2xl" htmlFor="email">
             Email
           </label>
           <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-10">
               <FaEnvelope className="text-gray-800 text-2xl" />
             </span>
             <input
               className={`appearance-none border border-black ${
                 errors.email ? 'border-red-500' : 'border-black'
-              } rounded w-[30rem] h-16 py-2 px-3 indent-8 text-xl  focus:outline-none focus:shadow-outline bg-transparent`}
+              } rounded w-[50rem] h-16 py-6 px-20 indent-8 text-xl  focus:outline-none focus:shadow-outline bg-transparent`}
               id="email"
               name="email"
               type="email"
@@ -122,17 +122,17 @@ const RegistrationForm = () => {
           {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
         </div>
         <div className="flex flex-col items-start mt-2">
-          <label className="text-lg" htmlFor="password">
+          <label className="text-2xl" htmlFor="password">
             Password
           </label>
           <div className="relative mt-1">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-10">
               <FaKey className="text-gray-800 text-2xl" />
             </span>
             <input
               className={`appearance-none border border-black ${
                 errors.password ? 'border-red-500' : 'border-gray-200'
-              } rounded w-[30rem] h-16 py-2 px-3 pl-8 indent-8 text-xl leading-tight focus:outline-none focus:shadow-outline bg-transparent`}
+              } rounded w-[50rem] h-16 py-6 px-20 pl-8 indent-8 text-xl leading-tight focus:outline-none focus:shadow-outline bg-transparent`}
               id="password"
               name="password"
               type="password"
@@ -146,7 +146,7 @@ const RegistrationForm = () => {
         </div>
         <div className=" mt-5">
           <button
-            className="bg-black w-[30rem]  hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black w-[22rem]  hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Register
