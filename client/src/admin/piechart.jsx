@@ -1,8 +1,8 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title} from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 export const data = {
   // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -32,6 +32,20 @@ export const data = {
   ],
 };
 
+// const options = {
+//   responsive: true,
+//   plugins: {
+//     legend: {
+//       position: 'top',
+//     },
+//     title: {
+//       display: true,
+//       text: 'Occupations Distribution',
+//     },
+//   },
+// };
+
 export default function Piechart() {
-  return <Doughnut data={data} />;
+  // return <Doughnut data={data} options={options}/>;
+  return <Doughnut data={data}/>;
 }

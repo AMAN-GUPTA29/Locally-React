@@ -18,6 +18,8 @@ import AdminLand from "./admin/adminland";
 import Customer from "./admin/customer";
 import Worker from "./admin/worker";
 import ConsumerLogin from "./pages/consumerlogin";
+import RegistrationForm from "./admin/adminRegister";
+import LoginForm from "./admin/adminLogin";
 
 // import { Link,Routes,Route } from 'react-router-dom';
 // import { Services } from './Services';
@@ -56,6 +58,8 @@ function App() {
         ...varunRoutes,
         ...pranavRoutes,
         ...chaitanyaroutes,
+        { path: "/adminLogin", element: <LoginForm /> },
+        { path: "/adminRegister", element: <RegistrationForm /> },
         { path: "/adminland", element: <AdminLand /> },
         { path: "/admincustomer", element: <Customer /> },
         { path: "/adminworker", element: <Worker /> },

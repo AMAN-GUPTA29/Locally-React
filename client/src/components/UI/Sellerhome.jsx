@@ -1,9 +1,11 @@
 import React from 'react'
 import '../CSS/sellerhome.css'
 import Transactions from './Transactions';
+import Navbar from './Navbar';
 const sellerhome = () => {
   return (
-    <div>   
+    <div> 
+      <Navbar/>  
     <div className="container position-relative">
         <div className="buttons my-3 d-flex justify-content-evenly">
             <a className="btn btn-dark px-4" href="#" role="button">New</a>
