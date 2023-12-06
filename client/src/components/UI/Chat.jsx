@@ -1,11 +1,12 @@
 import React from 'react';
-import '../CSS/Chat.css'; // Make sure to create a CSS file for your styles
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSearch, faEllipsisV, faUserCircle, faBan, faPaperclip, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import '../CSS/Chat.css'; 
 
+import Navbar from './Navbar';
 const Chat = () => {
   return (
-    <div className="container-fluid h-100">
+   <div>
+	<Navbar/>
+	<div className="container-fluid h-100">
       <div className="row justify-content-center">
         {/* Left side with contacts */}
         <div className="col-md-4 col-xl-4 chat">
@@ -195,7 +196,9 @@ const Chat = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
+
 
 export default Chat;

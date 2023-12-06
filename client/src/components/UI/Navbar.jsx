@@ -12,7 +12,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="expandme">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-link active mx-4"><Link to="/seller/sellerView" >Home</Link></li>
+            <li className="nav-link active mx-4"><Link to="/sellerView" >Home</Link></li>
             <li className="nav-link active mx-4"><Link to="/seller/services" >Your Services</Link></li>
             <li className="nav-link active mx-4"><Link to="/chat" >Chat</Link></li>
             <li className="nav-link active mx-4"><Link to="/seller/profile" >Profile</Link></li>
