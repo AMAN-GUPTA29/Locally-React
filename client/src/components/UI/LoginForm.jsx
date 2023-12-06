@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { FaEnvelope, FaKey, FaGoogle, FaTwitter, FaInstagram } from 'react-icons/fa';
+import './LoginForm.css'
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -58,21 +59,21 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen w-[30rem] m-auto flex flex-col items-center justify-center text-black">
       <form className=" px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
         <h1 className="text-4xl font-bold mb-6 text-center">Seller Login</h1>
-        <div className="input-group mt-1">
+        <div className="flex flex-col items-start mt-1">
           <label className="text-lg" htmlFor="email">
             Email
           </label>
           <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <FaEnvelope className="text-gray-400" />
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+              <FaEnvelope className="text-gray-800 text-2xl" />
             </span>
             <input
-              className={`appearance-none border ${
-                errors.email ? 'border-red-500' : 'border-gray-200'
-              } rounded w-80 h-12 py-2 px-3 pl-8 leading-tight focus:outline-none focus:shadow-outline`}
+              className={`appearance-none border border-black ${
+                errors.email ? 'border-red-500' : 'border-black'
+              } rounded w-[30rem] h-16 py-2 px-3 indent-8 text-xl  focus:outline-none focus:shadow-outline bg-transparent`}
               id="email"
               name="email"
               type="email"
@@ -84,18 +85,18 @@ const LoginForm = () => {
           </div>
           {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
         </div>
-        <div className="input-group mt-2">
+        <div className="flex flex-col items-start mt-2">
           <label className="text-lg" htmlFor="password">
             Password
           </label>
           <div className="relative mt-1">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <FaKey className="text-gray-400" />
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+              <FaKey className="text-gray-800 text-2xl" />
             </span>
             <input
-              className={`appearance-none border ${
+              className={`appearance-none border border-black ${
                 errors.password ? 'border-red-500' : 'border-gray-200'
-              } rounded w-80 h-12 py-2 px-3 pl-8 leading-tight focus:outline-none focus:shadow-outline`}
+              } rounded w-[30rem] h-16 py-2 px-3 pl-8 indent-8 text-xl leading-tight focus:outline-none focus:shadow-outline bg-transparent`}
               id="password"
               name="password"
               type="password"
@@ -107,9 +108,9 @@ const LoginForm = () => {
           </div>
           {errors.password && <p className="text-red-500 text-xs italic">{errors.password}</p>}
         </div>
-        <div className="input-group  mt-5">
+        <div className=" mt-5">
           <button
-            className="bg-black w-full hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black w-[30rem]  hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Login
@@ -136,3 +137,5 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+
