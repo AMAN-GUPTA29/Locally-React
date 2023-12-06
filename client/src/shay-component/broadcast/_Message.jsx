@@ -1,5 +1,5 @@
 import React from "react";
-
+import './Broadcast.css'
 export default ({ message }) => {
     return (
         <>
