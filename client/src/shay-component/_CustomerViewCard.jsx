@@ -5,20 +5,23 @@ import "./assets/CustomerView.css";
 import { useDispatch, useSelector } from "react-redux";
 // import useDispatch from "@reduxjs/toolkit";
 import { serviceActions } from "../features/servicerequest/servicerequestSlice";
+import { useNavigate } from "react-router-dom";
 
 function CustomerViewCard({ photo, title, tag, charge, description }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   //   dispatch(serviceActions.addservicerequest({money: , naam:  , type: }));
   const kuchBhi = () => {
+    navigate("display/");
     dispatch(
-      serviceActions.addservicerequest({
+      serviceActions.addService({
         naam: title,
         money: charge,
         type: tag,
       })
     );
   };
-  const lol = useSelector((state) => state.servicerequest.servicerequest);
+  const lol = useSelector((state) => state.servicerequest);
   console.log(lol);
   return (
     <div className="card mb-3">
@@ -41,13 +44,9 @@ function CustomerViewCard({ photo, title, tag, charge, description }) {
             )}
             <p className="card-text mb-4">Description : {description}</p>
             <h6>
-              <a
-                className="mainbutton mainotherbutton"
-                href="/customerView/display/"
-                onClick={kuchBhi}
-              >
+              <div className="mainbutton mainotherbutton" onClick={kuchBhi}>
                 Hire
-              </a>
+              </div>
             </h6>
           </div>
         </div>

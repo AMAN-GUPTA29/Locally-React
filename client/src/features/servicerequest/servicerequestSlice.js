@@ -1,23 +1,25 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-const initialState = {
-  servicerequest: [{ naam: "", money: 0, type: null }],
-};
+const initialState = [];
 
 const servicerequest = createSlice({
   name: "servicerequest",
   initialState,
   reducers: {
-    addservicerequest(state, action) {
-      state.servicerequest = [
-        ...state.servicerequest,
+    addService(state, action) {
+      return (state = [
+        ...state,
         {
           id: nanoid(),
           money: action.payload.money,
           type: action.payload.type,
           naam: action.payload.naam,
         },
-      ];
+      ]);
+    },
+
+    removeService(state, action) {
+      // return ()
     },
   },
 });
