@@ -1,24 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 // import Card from "./_CustomerViewCard";
 import CardArray from "./_CardArray";
+
+import { useEffect } from "react";
 import logo1 from './assets/imgs/1.png'
 import logo2 from './assets/imgs/2.png'
+import { json } from "react-router-dom";
 
 const dummyData = [
     {
-        id : 1,
-        photo : logo1,
-        title : "Test 1",
-        tag : "Auto",
-        description : "Auto driver he is",
-        charge : 100,
+        id: 1,
+        photo: logo1,
+        title: "Test 1",
+        tag: "Auto",
+        description: "Auto driver he is",
+        charge: 100,
     },
     {
-        id : 2,
-        photo : logo2,
-        title : "Test 2",
-        tag : "Prof",
-        description : "Professor she is",
+        id: 2,
+        photo: logo2,
+        title: "Test 2",
+        tag: "Prof",
+        description: "Professor she is",
     },
 ]
 
@@ -27,6 +30,22 @@ export default () => {
         let palceForm = document.getElementById('form')
         palceForm.classList.toggle('hidden')
     }
+
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        async function name_fxn() {
+            const response = await fetch('http://localhost:8080/api/customerview/data')
+            const body = await response.json()
+            setTimeout(() => {
+                setData(body.data)
+                setLoading(false)
+            }, 1000)
+        }
+
+        name_fxn();
+    }, [])
 
 
     return (
@@ -45,7 +64,7 @@ export default () => {
                 </form>
                 <br />
                 <div className="container-fluid">
-                    <CardArray data={dummyData} />
+                    {loading ? <div>Loading...</div> : <CardArray data={data} />}
                     {/* <Card photo={logo1} title={"Test"} tag="Auto" description="Driver" charge={100} /> */}
                 </div>
                 {/* ==============================Buttons============================= */}
@@ -53,10 +72,10 @@ export default () => {
                     <span className="flex-mid">
                         <div className="btn-group me-2 flex-" role="group" aria-label="First group">
                             <button type="button" className="btn btn-outline-secondary"
-                                style={{minWidth: 100+'px'}}>Previous</button>
+                                style={{ minWidth: 100 + 'px' }}>Previous</button>
                         </div>
                         <div className="btn-group me-2" role="group" aria-label="Second group">
-                            <button type="button" className="btn btn-secondary" style={{minWidth: 100+'px'}}>Next</button>
+                            <button type="button" className="btn btn-secondary" style={{ minWidth: 100 + 'px' }}>Next</button>
                         </div>
                     </span>
                 </div>
@@ -66,7 +85,7 @@ export default () => {
                     crossorigin="anonymous"></script>
 
 
-                
+
 
             </div>
         </div>

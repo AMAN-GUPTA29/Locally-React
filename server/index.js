@@ -39,6 +39,7 @@ App.listen(8080, () => {
 // =================================================================================
 
 App.use('/api/customer', require('./Routers/routeCustomer'));
+App.use('/api/customerview/data', require('./Routers/Customer/customerViewData.js'));
 
 // =================================================================================
 
