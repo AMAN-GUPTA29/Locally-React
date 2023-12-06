@@ -4,18 +4,24 @@ import "./admincss/adminland.css"
 import customerimg from './adminimages/customerimg.jpg';
 import serviceproviderimg from './adminimages/serviceproviderimg.jpg';
 import Piechart  from "./piechart";
+import { Barchart } from "./barchart";
 import Navbar from './navbar';
 
 export default function AdminLand(){
     return(
-        <div>          
+        <div className="bg">          
             <Navbar/>
             <div className="welcome mx-5 px-2 mt-3">
                 <h1>Welcome</h1>
                 <h1 className="mx-5 px-3">Mr.Admin</h1>
             </div>
+            <hr />
+            <div className="row mb-0">
+            <div className="col-7 border rounded-5 m-5 bg-white py-5" > <h1>% of Requested Services</h1> <Barchart /> </div>
+            <div className="col-4 border rounded-5 bg-white py-2" > <h1>% of Types of Services</h1> <Piechart /> </div>
+            </div>
             <div className="row justify-content-center mb-3 mt-1">
-                <div className="content rounded-3 col-5 border my-4 mx-3 p-2 d-flex flex-column">
+                <div className="content rounded-3 col-5 border my-4 mx-3 p-2 d-flex flex-column bg-white">
                     <header className="ps-3">
                         <h3 className="dailyStatistics">Daily</h3>
                     <h3 className="dailyStatistics ps-2">Statistics</h3>
@@ -29,7 +35,7 @@ export default function AdminLand(){
                         </p>
                     </div>
                 </div>
-                <div className="content2 col-5 my-4 mx-3 d-flex flex-column justify-content-center border rounded-3">
+                <div className="content2 col-5 my-4 mx-3 d-flex flex-column justify-content-center border rounded-3 bg-white">
                     <div className="row Statistics rounded-3"><div className="col">Statistics</div> </div>
                     <div className="row buttons">
                         <div className="row m-2">
@@ -97,7 +103,6 @@ export default function AdminLand(){
         </a>
       </div>
     </div>
-            <div style={{'height':400,'width':400}}><Piechart /> </div>
             <h1 className="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Increase New Services To Provide</h1>
             <h1 className="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Add New Terms & Conditions</h1>
         </div>

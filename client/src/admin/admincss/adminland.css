@@ -1,3 +1,6 @@
+.bg{
+  background:rgba(241, 240, 240, 0.856)
+}
 h1,h2,.navbar-brand,.fs-1{
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -14,7 +17,7 @@ h1,h2,.navbar-brand,.fs-1{
 .dailyStatistics{
     font-weight:800;
     font-size: 30px;
-    color: #333;
+    /* color: #333; */
 }
 .buttons{
     margin-top: -70px;
