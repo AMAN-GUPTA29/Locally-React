@@ -2,9 +2,9 @@ import React from "react";
 
 export default () => {
     return (
-        <div class="container">
+        <div className="container">
             <h2># Your Transactions</h2>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
