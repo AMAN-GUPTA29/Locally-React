@@ -100,3 +100,165 @@ animation: zoom-in 0.6s forwards;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-size: 18px;
 }
+
+.card-slider {
+  display: flex;
+  overflow-x: auto; 
+  gap: 10px; 
+  padding: 10px; 
+  border: 1px solid #dee2e6;
+  border-radius: 15px;
+}
+
+.card-slider-item {
+  flex: 0 0 auto;
+  width: 200px; 
+}
+
+.four-cards {
+  display: flex;
+  gap: 20px; 
+  margin-top: 50px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.boxes {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 15px;
+  padding: 15px; 
+  margin-bottom: 20px; 
+}
+
+.contacts {
+  color: white;
+  background-color: #f29b31;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+.contact-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.contact-number {
+  background: #d2851d;
+  grid-column: 2;
+  grid-row: 1 ;
+  border-radius: 50px;
+}
+
+.contact-img {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contact-photos {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 10px; 
+  margin: 5px;
+}
+
+.subscribed {
+  color: white;
+  background: #2db29d;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 10px; 
+}
+
+.subscribed-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.subscribed-number {
+  background: #208d7d;
+  grid-column: 2;
+  grid-row: 1 ;
+  border-radius: 50px;
+}
+
+.subscribed-img {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.subscribed-photos {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 10px; 
+  margin: 5px; 
+}
+
+.pending {
+  color: white;
+  background: #5e49e2;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 10px; 
+}
+
+.pending-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.pending-number {
+  background: #4938bd;
+  grid-column: 2;
+  grid-row: 1;
+  border-radius: 50px;
+}
+
+.pending-img {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.pending-photos {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 10px; 
+  margin: 5px; 
+}
+
+.blocked {
+  color: white;
+  background: #eb468b;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 10px; 
+}
+
+.blocked-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.blocked-number {
+  background: #c63673;
+  grid-column: 2;
+  grid-row: 1 ;
+  border-radius: 50px;
+}
+
+.blocked-img {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.blocked-photos {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 10px; 
+  margin: 5px; 
+}
