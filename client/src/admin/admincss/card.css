@@ -1,0 +1,59 @@
+.card-content {
+  border: 1px solid #dee2e6;
+  border-radius: 15px; 
+  overflow: hidden; 
+  margin: 10px;
+  background-color: white; 
+}
+.idcard{
+  background-color: rgb(221, 212, 212);
+  /* background: #eb468b; */
+  /* background-color: #f29b31; */
+  background: #208d7d;
+  background: #2db29d;
+  display: flex;
+  flex-direction: row;
+  padding: 5%;
+}
+.profile{
+  border-radius: 50%;
+}
+
+.idcard-rating{
+  /* background-color: rgb(204, 197, 197); */
+  background-color: white;
+  /* background: #208d7d; */
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding:8px 20px; 
+}
+
+.combined-rating{
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.idcard-footer{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.idcard-phone{
+  display: flex;
+  flex-direction: row;
+  margin: 2% 5%;
+}
+.idcard-zone{
+  display: flex;
+  flex-direction: row;
+  margin: 2% 5%;
+}
+.phone-label,.zone-label{
+  margin: 2% 4%;
+}
+

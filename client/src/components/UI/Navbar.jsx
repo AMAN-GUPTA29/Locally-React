@@ -18,7 +18,7 @@ const Navbar = () => {
             <li className="nav-link active mx-4"><Link to="/seller/profile" >Profile</Link></li>
             <li className="nav-link active mx-4"><Link to="/seller/request" >Requests</Link></li>
             <li className="nav-link active mx-4"><Link to="/seller/broadcast" >Notifications</Link></li>
-            <li className="nav-link active mx-4"><Link to="/logout" >Logout</Link></li>
+            <li className="nav-link active mx-4"><Link to="/seller/login" >Logout</Link></li>
           </ul>
         </div>
       </div>
