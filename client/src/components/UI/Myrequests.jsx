@@ -1,44 +1,128 @@
-import React from 'react'
-import '../CSS/Myrequests.css';
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 
+
 const Myrequests = () => {
+  const [requests, setRequests] = useState([
+    {
+      id: 1,
+      customer: 'John Doe',
+      email: 'john@example.com',
+      service: 'Some Service',
+      price: '$100',
+      accepted: true,
+      rejected: false,
+    },
+    {
+      id: 2,
+      customer: 'John Doe',
+      email: 'john@example.com',
+      service: 'Some Service',
+      price: '$100',
+      accepted: false,
+      rejected: false,
+    },
+  ]);
+
+  const handleAccept = (id) => {
+    setRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === id ? { ...request, accepted: true } : request
+      )
+    );
+  };
+
+  const handleReject = (id) => {
+    setRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === id ? { ...request, rejected: true } : request
+      )
+    );
+  };
+
   return (
     <div>
       <Navbar/>
-          <header><h2 className="mx-5 text-tertiary">Service</h2> <h2 className="mx-5 text-info">Requests</h2></header>
-    <div className="d-flex flex-column justify-content-center align-items-center mx-5">
-        <div className="card col-12 d-flex flex-column justify-content-center m-3 p-4 px-5 border rounded-3">
-            <div className="d-flex"><h5>Customer Name :</h5><p className="fs-5">Abhilash</p></div>
-            <div className="d-flex"><h5>Customer Email :</h5><p className="fs-5">abhilash@gmail.com </p></div>
-            <div className="d-flex"><h5>Requested Service :</h5><p className="fs-5">Furniture</p></div>
-            <div className="d-flex"><h5>Price :</h5><p className="fs-5">5000</p></div>
-            
-            <div className="d-flex buttons">
-                <a href="/seller/rejected/ result[i].accepted " className="border p-2 px-5 reject text-decoration-none text-white">Reject</a>
-                <a href="/seller/accepted/ !result[i].accepted" className="border p-2 px-5 accept text-decoration-none text-white">accept</a>
-                {/* <!-- <a href="" className="col-lg-4 col-md-5 accept"><button className="p-2">Accept</button></a> --> */}
-             </div>
-             </div>
-             </div>
-                <div className="d-flex flex-column justify-content-center align-items-center mx-5">
-                    <div className="accepted-card col-12 d-flex flex-column justify-content-center m-3 p-4 px-5 border rounded-3">
-                        <div className="d-flex"><h5>Customer Name :</h5><p className="fs-5">karthik </p></div>
-                        <div className="d-flex"><h5>Customer Email :</h5><p className="fs-5"> karthik@outlook.com </p></div>
-                        <div className="d-flex"><h5>Requested Service :</h5><p className="fs-5">Electrician </p></div>
-                        <div className="d-flex"><h5>Price :</h5><p className="fs-5">1600 </p></div>
-                        
-                <div className="d-flex buttons">
-                    <a href="/seller/rejected/ result[i].accepted %>/ result[i].id %>" className="after-accepted-reject border p-2 px-5 reject text-decoration-none text-white">Reject</a>
-                    <a href="" className="after-accepted-accept border p-2 px-5 ccepted text-decoration-none text-white">accepted</a>
-                 </div>
-                </div>
-        </div>
-        
-        <h1 className="m-3 No Requests From any User">Empty</h1>
-     
-    </div>
-  )
-}
+      <header className="mx-5 flex items-center justify-center h-20 mt-10 bg-gradient-to-r from-gray-600 to-yellow-300 px-4 rounded-xl">
+        <h2 className="text-tertiary text-black font-bold text-xl">
+          Service Requests
+          {/* <span className="text-info">Requests</span> */}
+        </h2>
+      </header>
+      <div className="mx-5 flex flex-col justify-center items-center">
+        {requests.map((item) => (
+          <div
+            key={item.id}
+            className={`col-12 flex flex-col justify-center m-3 p-4 px-5 border rounded-xl ${
+              item.accepted
+                ? 'bg-gradient-to-r from-green-400 to-gray-400'
+                : item.rejected
+                ? 'bg-gradient-to-r from-red-400 to-gray-400'
+                : 'bg-gray-300'
+            }`}
+          >
+            <div className="flex">
+              <h5>
+                Customer Name : <p className="fs-5 inline">{item.customer}</p>
+              </h5>
+            </div>
+            <div className="flex">
+              <h5>
+                Customer Email :
+                <p className="fs-5 inline">{item.email}</p>
+              </h5>
+            </div>
+            <div className="flex">
+              <h5>
+                Requested Service :
+                <p className="fs-5 inline">{item.service}</p>
+              </h5>
+            </div>
+            <div className="flex">
+              <h5>
+                Price :<p className="fs-5 inline">{item.price}</p>
+              </h5>
+            </div>
+            <div className="flex buttons justify-center">
+              {!item.accepted && !item.rejected && (
+                <button
+                  onClick={() => handleAccept(item.id)}
+                  className="border p-2 px-5 accept text-decoration-none text-white bg-green-500"
+                >
+                  Accept
+                </button>
+              )}
+              {!item.accepted && !item.rejected && (
+                <button
+                  onClick={() => handleReject(item.id)}
+                  className="border p-2 px-5 reject text-decoration-none text-white bg-red-500"
+                >
+                  Reject
+                </button>
+              )}
+              {item.accepted && (
+                <button className="border p-2 px-5 accepted text-decoration-none text-white" disabled>
+                  Accepted
+                </button>
+              )}
+              {item.rejected && (
+                <button className="border p-2 px-5 rejected text-decoration-none text-white" disabled>
+                  Rejected
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
 
-export default Myrequests
+        {requests.length === 0 && (
+          <React.Fragment>
+            <h1 className="m-3 text-center">Empty</h1>
+            <h1 className="m-3">No Requests From any User</h1>
+          </React.Fragment>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Myrequests;
