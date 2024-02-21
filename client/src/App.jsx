@@ -67,7 +67,7 @@ function App() {
         ...shayRoutes,
         ...varunRoutes,
         ...pranavRoutes,
-        // ...chaitanyaroutes,
+        ...chaitanyaroutes,
         { path: "/adminLogin", element: <AdminLogin /> },
         { path: "/adminRegister", element: <AdminRegister /> },
         { path: "/adminland", element: <AdminLand /> },
