@@ -3,6 +3,9 @@ const session = require('express-session');
 const uri = require("./MongoUtils/mongo_pass.js");
 const mongoose = require('mongoose')
 const cors = require('cors')
+const routes = require('./admin/taskroute.js')
+const bodyParser = require('body-parser'); // Add this line
+
 
 mongoose
     .connect(uri, {
@@ -19,6 +22,9 @@ mongoose
 
 const App = express()
 
+App.use(bodyParser.json());
+
+
 App.use(
     session({
         secret: "keyy that will sign cookie",
@@ -32,11 +38,13 @@ App.use(
 );
 App.use(cors())
 
+
 App.listen(8080, () => {
     console.log("\nListening to \nhttp://localhost:8080/")
 });
 
 // =================================================================================
+App.use('/api',routes);
 
 App.use('/api/customer', require('./Routers/routeCustomer'));
 App.use('/api/customerview/data', require('./Routers/Customer/customerViewData.js'));

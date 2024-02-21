@@ -1,27 +1,113 @@
 import React from "react";
-import {Link , Outlet} from "react-router-dom";
-import "./admincss/navbar.css"
+import { Link } from "react-router-dom";
 
-export default function Navbar(){
-    return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3 rounded-bottom-5">
-    <div className="container-fluid">
-      <a className="navbar-brand ps-4 text-warning locally" href="/">LOCALLY</a>
-      <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#expandme" >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="navbar-collapse" id="">
-          <div className="navbar-nav">
-              <Link className="nav-link active mx-4" to="/adminland">Home</Link>
-              <Link className="nav-link active mx-4" to="/admincustomer">Customers</Link>
-              <Link className="nav-link active mx-4" to="/adminworker">Workers</Link>
-              <Link className="nav-link active mx-4" to="/adminbroadcast">Broadcast</Link>
-              {/* <Link className="nav-link active mx-4" to="">Past Broadcast</Link> */}
-              <Link className="nav-link border rounded-3 me-3 active position-absolute end-0 me-5" to="/">Logout</Link>
-              <Outlet/>
+export default function Navbar() {
+  return (
+    <nav className="bg-gray-900">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="relative flex h-16 items-center justify-between">
+          <div className="flex-shrink-0 flex items-center">
+            <span className="text-yellow-400 text-xl font-bold">LOCALLY</span>
+          </div>
+          <div className="hidden sm:block sm:ml-6">
+            <div className="flex space-x-4">
+              <Link
+                to="/adminland"
+                className="text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-yellow-400 hover:text-gray-900"
+              >
+                Home
+              </Link>
+              <Link
+                to="/admincustomer"
+                className="text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-yellow-400 hover:text-gray-900"
+              >
+                Customers
+              </Link>
+              <Link
+                to="/adminworker"
+                className="text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-yellow-400 hover:text-gray-900"
+              >
+                Workers
+              </Link>
+              <Link
+                to="/adminbroadcast"
+                className="text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-yellow-400 hover:text-gray-900"
+              >
+                Broadcast
+              </Link>
+              <Link
+                to="/requests"
+                className="text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-yellow-400 hover:text-gray-900"
+              >
+                requests
+              </Link>
+              <Link
+                to="/"
+                className="text-white border rounded-md px-3 py-2 text-sm font-medium transition duration-300 hover:bg-yellow-400 hover:text-gray-900"
+              >
+                Logout
+              </Link>
             </div>
+          </div>
+          <div className="sm:hidden">
+            <button
+              type="button"
+              className="bg-gray-900 text-white inline-flex items-center justify-center p-2 rounded-md  hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className="block h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
-    </div>
-</nav>
-    );
+      </div>
+      <div className="sm:hidden" id="mobile-menu">
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          <Link
+            to="/adminland"
+            className="text-gray-300 hover:bg-yellow-400 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition duration-300"
+          >
+            Home
+          </Link>
+          <Link
+            to="/admincustomer"
+            className="text-gray-300 hover:bg-yellow-400 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition duration-300"
+          >
+            Customers
+          </Link>
+          <Link
+            to="/adminworker"
+            className="text-gray-300 hover:bg-yellow-400 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition duration-300"
+          >
+            Workers
+          </Link>
+          <Link
+            to="/adminbroadcast"
+            className="text-gray-300 hover:bg-yellow-400 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition duration-300"
+          >
+            Broadcast
+          </Link>
+          <Link
+            to="/"
+            className="text-gray-300 hover:bg-yellow-400 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition duration-300"
+          >
+            Logout
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
 }

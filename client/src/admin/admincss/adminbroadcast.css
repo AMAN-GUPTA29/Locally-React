@@ -26,7 +26,7 @@ form {
     width: 100%;
 }
 
-.body {
+.past-broadcasts {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -35,12 +35,13 @@ form {
     margin: 0;
 }
 
-.button-container {
+.users {
     width: 100%;
     display: flex;
+    flex-direction: row;
 }
 
-.button {
+.all,.customers,.workers {
     width: 33%;
     background-color: transparent;
     border: none;
@@ -55,7 +56,7 @@ form {
     position: relative;
 }
 
-.button:after {
+.all:after,.customers:after,.workers:after {
     content: "";
     display: block;
     width: 50%;
@@ -71,12 +72,17 @@ form {
     transition: transform 0.3s ease-in-out;
 }
 
-.button:hover:after {
+.all:hover:after,.customers:hover:after,.workers:hover:after  {
     transform: scaleX(1);
     /* Expand the underline on hover */
 }
 
 /* Add some spacing between the buttons for better visibility */
-.button+.button {
+.all+.all,.customers+.customers,.workers+.workers {
     margin-left: 10px;
+}
+
+/* Add this CSS to your existing styles */
+.active::after {
+    transform: scaleX(1);
 }
