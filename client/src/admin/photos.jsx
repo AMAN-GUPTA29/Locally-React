@@ -1,4 +1,5 @@
 import React from "react";
+import './admincss/photos.css'
 
 const Photos = () => {
   return (

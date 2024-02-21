@@ -1,91 +1,92 @@
-// customer.jsx
 import React, { useEffect, useState } from 'react';
 import './admincss/customer.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navbar';
 
 const Customer = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [modalType, setModalType] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('../../src/admin/customerData.json');
-        const fetchedData = await res.json();
-        setData(fetchedData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+    fetch('http://localhost:8080/api/customerDetails')
+      .then(response => response.json())
+      .then(data => setUsers(data))
+      .catch(error => console.error('Error fetching data:', error));
+    console.log(users);
   }, []);
 
   const handleBlock = (userId) => {
-    setData((prevData) => {
-      return prevData.map((user) =>
+    setUsers((preUsers) => {
+      return preUsers.map((user) =>
         user._id === userId ? { ...user, blocked: !user.blocked } : user
       );
     });
   };
 
   const handleUnblock = (userId) => {
-    setData((prevData) => {
-      return prevData.map((user) =>
+    setUsers((preUsers) => {
+      return preUsers.map((user) =>
         user._id === userId ? { ...user, blocked: false } : user
       );
     });
   };
 
+  const openModal = (user, type) => {
+    setSelectedUser(user);
+    setModalType(type);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedUser(null);
+    setModalType(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
       <Navbar />
-      <h1 className="head text-center fw-bold my-4">Customers Of Locally</h1>
+      <h1 className="head text-center font-bold my-4 text-2xl">Customers Of Locally</h1>
 
-      {data && (
-        <div className="container d-flex justify-content-center">
-          {/* Use Bootstrap classes directly, remove unnecessary classes */}
-          <table className="table table-hover m-1 p-3 rounded-3">
-            <thead className="table">
+      {users && (
+        <div className="container mx-auto">
+          <table className="table-auto w-full">
+            <thead className="bg-gray-200">
               <tr>
-                <th className="inf-head text-center">#</th>
-                <th className="inf-head text-center">Name</th>
-                <th className="inf-head text-center">Email</th>
-                <th className="inf-head text-center">Id</th>
-                <th className="inf-head text-center">Action</th>
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Email</th>
+                <th className="px-4 py-2">Id</th>
+                <th className="px-4 py-2">Action</th>
               </tr>
             </thead>
-            <tbody className="table-group-divider align-middle text-center">
-              {data.map((user, i) => (
+            <tbody>
+              {users.map((user, i) => (
                 <tr key={i}>
-                  <td className="inf">{i + 1}</td>
-                  <td className="inf">Mr.{user.name}</td>
-                  <td className="inf">{user.email}</td>
-                  <td className="inf">{user._id}</td>
-                  <td className='row d-flex justify-content-center'>
+                  <td className="border px-4 py-2">Mr.{user.name}</td>
+                  <td className="border px-4 py-2">{user.email}</td>
+                  <td className="border px-4 py-2">{user._id}</td>
+                  <td className="border px-4 py-2">
                     {user.blocked ? (
                       <button
-                        className="btn btn-danger col-5"
-                        data-bs-toggle="modal"
-                        data-bs-target={`#unblockModalrow${i}`}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => openModal(user, 'unblock')}
                       >
                         Blocked
                       </button>
                     ) : (
                       <>
                         <button
-                          type="button"
-                          className="btn btn-outline-success me-4 px-4 py-2 col-4"
-                          data-bs-toggle="modal"
-                          data-bs-target={`#viewModalrow${i}`}
+                          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
+                          onClick={() => openModal(user, 'view')}
                         >
                           View
                         </button>
                         <button
-                          type="button"
-                          className="btn btn-outline-danger px-4 py-2 col-4"
-                          data-bs-toggle="modal"
-                          data-bs-target={`#deleteModalrow${i}`}
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          onClick={() => openModal(user, 'block')}
                         >
                           Block
                         </button>
@@ -99,117 +100,56 @@ const Customer = () => {
         </div>
       )}
 
-        {/* View modal */}
-        { data.length !== 0 && (data.map((user, i) => (
-        <div className="modal fade inf" id={`viewModalrow${i}`} key={i} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog modal-lg modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <div className="modal-title fs-5" id="exampleModalLabel">
-                  <h1>User Details</h1>
-                </div>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div className="modal-body">
-                <p><span className='viewmodal-names'>ID : </span> {user._id}</p>
-                <p><span className='viewmodal-names'>Name : </span> Mr.{user.name}</p>
-                <p><span className='viewmodal-names'>Email : </span> {user.email}</p>
-              </div>
+      {/* Modal and Overlay */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <div className="modal-header">
+              <h1 className="modal-title">{modalType === 'view' ? 'User Details' : modalType === 'unblock' ? 'Unblock User' : 'Block User'}</h1>
+              <button type="button" className="btn-close" onClick={closeModal} aria-label="Close">X</button>
             </div>
+            <div className="modal-body">
+              {modalType === 'view' && (
+                <>
+                  <p><span className='viewmodal-names'>ID : </span> {selectedUser._id}</p>
+                  <p><span className='viewmodal-names'>Name : </span> Mr.{selectedUser.name}</p>
+                  <p><span className='viewmodal-names'>Email : </span> {selectedUser.email}</p>
+                </>
+              )}
+              {modalType === 'unblock' && (
+                <p>Are you sure you want to unblock this user {selectedUser.name}?</p>
+              )}
+              {modalType === 'block' && (
+                <p>Are you sure you want to block this user {selectedUser.name}?</p>
+              )}
+            </div>
+            {modalType !== 'view' && (
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="bg-red-500 px-5 py-2"
+                  onClick={closeModal}
+                >
+                  No
+                </button>
+                <button
+                  type="button"
+                  className="bg-green-500 px-5 py-2"
+                  onClick={() => {
+                    modalType === 'unblock' ? handleUnblock(selectedUser._id) : handleBlock(selectedUser._id);
+                    closeModal();
+                  }}
+                >
+                  Yes
+                </button>
+              </div>
+            )}
           </div>
         </div>
-      )))}
+      )}
 
-      {/* Unblock modal */}
-      {data.length !== 0 &&
-        data.map((user, i) => (
-          <div
-            className="modal fade inf"
-            id={`unblockModalrow${i}`}
-            key={i}
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <div className="modal-title fs-5" id="exampleModalLabel">
-                    <h1>Unblock User</h1>
-                  </div>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body fs-3">
-                  {user && (
-                    <div>
-                      <p>Are you sure you want to unblock this user {user.name}?</p>
-                      <div className="modal-footer">
-                        <button type="button" className="btn btn-outline-success px-5 py-2" data-bs-dismiss="modal">
-                          No
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-outline-danger px-5 py-2"
-                          onClick={() => handleUnblock(user._id)}
-                          data-bs-dismiss="modal"
-                        >
-                          Yes
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-
-      {/* Delete modal */}
-      {data.length !== 0 &&
-        data.map((user, i) => (
-          <div
-            className="modal fade inf"
-            id={`deleteModalrow${i}`}
-            key={i}
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <div className="modal-title fs-5" id="exampleModalLabel">
-                    <h1>Block User</h1>
-                  </div>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body fs-3">
-                  {user && (
-                    <div>
-                      <p>Are you sure you want to block this user {user.name}?</p>
-                      <div className="modal-footer">
-                        <button type="button" className="btn btn-outline-success px-5 py-2" data-bs-dismiss="modal">
-                          No
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-outline-danger px-5 py-2"
-                          onClick={() => handleBlock(user._id)}
-                          data-bs-dismiss="modal"
-                        >
-                          Yes
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
     </div>
   );
 };
-
 
 export default Customer;
