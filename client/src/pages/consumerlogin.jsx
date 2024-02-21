@@ -14,9 +14,7 @@ function AuthenticationContainer() {
               <Components.Input type="text" placeholder="Name" />
               <Components.Input type="email" placeholder="Email" />
               <Components.Input type="password" placeholder="Password" />
-              <Components.Button onClick={console.log("heloooooo")}>
-                Sign Up
-              </Components.Button>
+              <Components.Button>Sign Up</Components.Button>
             </Components.Form>
           </Components.SignUpContainer>
 

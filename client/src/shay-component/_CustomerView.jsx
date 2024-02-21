@@ -25,7 +25,7 @@ const dummyData = [
   },
 ];
 
-export default function CustomerView() {
+export default () => {
   function filter() {
     let palceForm = document.getElementById("form");
     palceForm.classList.toggle("hidden");
@@ -41,7 +41,7 @@ export default function CustomerView() {
       );
       const body = await response.json();
       setTimeout(() => {
-        // console.log(body.data);
+        console.log(body.data);
         setData(body.data);
         setLoading(false);
       }, 1000);
@@ -121,4 +121,4 @@ export default function CustomerView() {
       </div>
     </div>
   );
-}
+};

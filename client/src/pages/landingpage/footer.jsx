@@ -1,5 +1,5 @@
 import logo from "../../assets/images/logo.png";
-import "./footeer.css";
+import "./footer.css";
 
 const Footerland = () => {
   return (
