@@ -17,6 +17,11 @@ import AdminLand from "./admin/adminland";
 import Adminbroadcast from './admin/adminbroadcast';
 import Customer from "./admin/customer";
 import Worker from "./admin/worker";
+// import ConsumerLogin from "./pages/consumerlogin";
+import LoginCust from "./pages/loginCust";
+
+import RegistrationForm from "./admin/adminRegister";
+import LoginForm from "./admin/adminLogin";
 import Requests from './admin/requests';
 import AdminRegister from './admin/adminRegister';
 
@@ -58,7 +63,7 @@ function App() {
       element: <RootLayout />,
       children: [
         { path: "/", element: <HomePage /> },
-        { path: "/consumerlogin", element: <ConsumerLogin></ConsumerLogin> },
+        { path: "/consumerlogin", element: <LoginCust /> },
         ...shayRoutes,
         ...varunRoutes,
         ...pranavRoutes,
