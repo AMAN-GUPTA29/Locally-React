@@ -1,110 +1,137 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import "./admincss/adminland.css"
-import customerimg from './adminimages/customerimg.jpg';
-import serviceproviderimg from './adminimages/serviceproviderimg.jpg';
-import Piechart  from "./piechart";
+
 import { Barchart } from "./barchart";
+import Piechart from "./piechart";
+import jsonData from '../../src/admin/workerData.json';
 import Navbar from './navbar';
 
-export default function AdminLand(){
-    return(
-        <div className="bg">          
-            <Navbar/>
-            <div className="welcome mx-5 px-2 mt-3">
-                <h1>Welcome</h1>
-                <h1 className="mx-5 px-3">Mr.Admin</h1>
+import Photos from "./photos";
+import contactsimg from './adminimages/contacts.jpg';
+import subscribedimg from './adminimages/subscribed.jpeg';
+import pendingimg from './adminimages/pending.png';
+import blockedimg from './adminimages/blocked2.jpeg';
+import customerimg from './adminimages/customerimg.jpg';
+import serviceproviderimg from './adminimages/serviceproviderimg.jpg';
+import Card from "./card";
+// import Line from "./line";
+
+
+export default function AdminLand() {
+    const [filteredData, setFilteredData] = useState([]);
+
+    useEffect(() => {
+        // Filter the data based on a 5-star rating
+        const fiveStarData = jsonData.filter(item => item.rating === '5');
+        setFilteredData(fiveStarData);
+    }, []);
+    return (
+        <div className="body">
+            <Navbar />
+            {/* <Line/> */}
+            <div className="flex flex-wrap justify-evenly ">
+                <div className="w-full md:w-7/12 border rounded-lg bg-white">
+                    <h1 className="text-xl font-bold mb-3">% of Subscribers Registered</h1>
+                    <Barchart />
+                </div>
+                <div className="w-full md:w-4/12 border rounded-lg bg-white">
+                    <h1 className="text-xl font-bold mb-3">% of Types of Services</h1>
+                    <Piechart />
+                </div>
             </div>
-            <hr />
-            <div className="row mb-0">
-            <div className="col-7 border rounded-5 m-5 bg-white py-5" > <h1>% of Requested Services</h1> <Barchart /> </div>
-            <div className="col-4 border rounded-5 bg-white py-2" > <h1>% of Types of Services</h1> <Piechart /> </div>
-            </div>
-            <div className="row justify-content-center mb-3 mt-1">
-                <div className="content rounded-3 col-5 border my-4 mx-3 p-2 d-flex flex-column bg-white">
-                    <header className="ps-3">
-                        <h3 className="dailyStatistics">Daily</h3>
-                    <h3 className="dailyStatistics ps-2">Statistics</h3>
-                    </header>
-                    <div className="matter">
-                        <p className="">
-                            The statistics of the webpage show Link steady increase in usage and user engagement over time. In the past year, the website has seen Link 25% increase in overall traffic, with Link significant portion of new visitors coming from social media channels.
-                        </p>
-                        <p className="">
-                            Users are spending an average of 3 minutes and 30 seconds on the website, indicating Link high level of engagement and interest in the content. The bounce rate has also decreased by 15%, suggesting that users are finding the website's content relevant and engaging.
-                        </p>
+
+            <div className="four-cards flex flex-row border justify-evenly">
+                <div className="w-1/4 m-4 px-7 py-4 boxes border contacts grid grid-cols-3 gap-4 rounded-xl">
+                    <div className="name col-span-2 text-xl font-bold">All Contacts</div>
+                    <span className="contact-number rounded-full text-center text-2xl font-bold">30</span>
+                    <div className="contact-img row-end-3">
+                        <img src={contactsimg} alt="Contacts" className="rounded-full" style={{ width: '50px', height: '50px' }} />
+                    </div>
+                    <div className="contact-photos col-span-2">
+                        <Photos />
                     </div>
                 </div>
-                <div className="content2 col-5 my-4 mx-3 d-flex flex-column justify-content-center border rounded-3 bg-white">
-                    <div className="row Statistics rounded-3"><div className="col">Statistics</div> </div>
-                    <div className="row buttons">
-                        <div className="row m-2">
-                            <Link className="col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">85 customers</Link>
-                            <Link className="col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">20 Workers</Link>
-                            <Link className="col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">3 Types Services</Link>
-                        </div>
-                        <div className="row m-2 text-center">
-                            <Link className="col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">53 Visitiors</Link>
-                            <Link className="col-3 py-4 p-3 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">$23 Earnings</Link>
-                        </div>
-                    </div>                    
-                </div>        
-            </div>
-            <div className="bg-dark p-3 my-2 mx-5 rounded-3 manage">
-                <h2 className="m-2 text-white pb-4">Manage Your Subcribers</h2>
-                <div className="row justify-content-center">
-                    <Link className="bs-cards text-decoration-none text-black mx-5 mb-3 col-4">
-                        <div className="card">
-                            <img src={customerimg} className="card-img-top" alt="..." height="300px" width="500px" />
-                            <div className="card-body">
-                                <h5 className="card-title text-center">CUSTOMERS</h5>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link className="bs-cards text-decoration-none text-black mx-5 mb-3 col-4">
-                        <div className="card">
-                            <img src={serviceproviderimg} className="card-img-top" alt="..." height="300px" width="500px" />
-                            <div className="card-body">
-                                <h5 className="card-title text-center">Workers</h5>
-                            </div>
-                        </div>
-                    </Link>
+                <div className="w-1/4 m-4 px-7 py-4 boxes border subscribed grid grid-cols-3 gap-4 rounded-xl">
+                    <div className="name col-span-2 text-xl font-bold">Subsrcibed</div>
+                    <div className="subscribed-number rounded-full text-center text-2xl font-bold">20</div>
+                    <div className="contact-img row-end-3">
+                        <img src={subscribedimg} alt="Contacts" className="rounded-full" style={{ width: '50px', height: '50px' }} />
+                    </div>
+                    <div className="contact-photos col-span-2">
+                        <Photos />
+                    </div>
+                </div>
+                <div className="w-1/4 m-4 px-7 py-4 boxes border pending grid grid-cols-3 gap-4 rounded-xl">
+                    <div className="name col-span-2 text-xl font-bold">Pending Approval</div>
+                    <div className="pending-number rounded-full text-center text-2xl font-bold">5</div>
+                    <div className="contact-img row-end-3">
+                        <img src={pendingimg} alt="Contacts" className="rounded-full" style={{ width: '50px', height: '50px' }} />
+                    </div>
+                    <div className="contact-photos col-span-2">
+                        <Photos />
+                    </div>
+                </div>
+                <div className="w-1/4 m-4 px-7 py-4 boxes border blocked grid grid-cols-3 gap-4 rounded-xl">
+                    <div className="name col-span-2 text-xl font-bold">Blocked</div>
+                    <div className="blocked-number rounded-full text-center text-2xl font-bold">6</div>
+                    <div className="contact-img row-end-3">
+                        <img src={blockedimg} alt="Contacts" className="rounded-full" style={{ width: '50px', height: '50px' }} />
+                    </div>
+                    <div className="contact-photos col-span-2">
+                        <Photos />
+                    </div>
                 </div>
             </div>
-            <div className="d-flex justify-content-center py-5">
-      <div className="px-2">
-        <a href="abc" className="btn btn-users bg-danger text-white">
-          <i className="fas fa-users"></i>
-          Users
-        </a>
-      </div>
-      <div className="px-2">
-        <a href="abc" className="btn btn-traffic bg-info text-white">
-          <i className="fas fa-chart-line"></i>
-          Traffic
-        </a>
-      </div>
-      <div className="px-2">
-        <a href="abc" className="btn btn-revenue bg-warning text-white">
-          <i className="fas fa-dollar-sign"></i>
-          Revenue
-        </a>
-      </div>
-      <div className="px-2">
-        <a href="abc" className="btn btn-tools bg-success text-white">
-          <i className="fas fa-tools"></i>
-          Services
-        </a>
-      </div>
-      <div className="px-2">
-        <a href="/admin/pastbroadcast" className="btn btn-messages bg-primary text-white">
-          <i className="fas fa-envelope"></i>
-          Messages
-        </a>
-      </div>
+
+
+            <div className="border overflow-x-auto whitespace-no-wrap">
+                <div className="flex">
+                    {filteredData.map((item) => (
+                        <div key={item._id} className="w-1/4 flex-none mx-2">
+                            <div className="rounded-2xl border overflow-hidden mx-3">
+                                <Card
+                                    image={item.image}
+                                    name={item.name}
+                                    rating={item.rating}
+                                    phone={item.phone}
+                                    zone={item.Zone}
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+
+            <div className="bg-gray-900 p-3 my-2 mx-5 rounded-3 text-center">
+    <h2 className="m-2 text-white pb-4">Manage Your Subscribers</h2>
+    <div className="grid grid-cols-2 gap-4 justify-items-center">
+        <Link className="bg-white text-black mx-5 mb-3 rounded-lg overflow-hidden" to="/admincustomer">
+            <div className="aspect-w-1 aspect-h-1">
+                <img src={customerimg} className="object-cover h-full w-full" alt="..." />
+            </div>
+            <div className="p-4">
+                <h5 className="text-center">CUSTOMERS</h5>
+            </div>
+        </Link>
+        <Link className="bg-white text-black mx-5 mb-3 rounded-lg overflow-hidden" to="/adminworker">
+            <div className="aspect-w-1 aspect-h-1">
+                <img src={serviceproviderimg} className="object-cover h-full w-full" alt="..." />
+            </div>
+            <div className="p-4">
+                <h5 className="text-center">Workers</h5>
+            </div>
+        </Link>
     </div>
-            <h1 className="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Increase New Services To Provide</h1>
-            <h1 className="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Add New Terms & Conditions</h1>
+</div>
+
+
+
+
+
+
         </div>
-    );
+    )
 }

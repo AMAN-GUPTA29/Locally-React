@@ -3,14 +3,12 @@ html {
   padding-top: 1%;
   height: 100%;
   margin: 0;
-  background: #cb997e;
-  /* background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5); */
+ 
+
 }
 
 .chat {
-  /* margin-top: auto;
-  margin-bottom: auto; */
+ 
   width: 100%;
 }
 
@@ -257,25 +255,25 @@ html {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* width */
+
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
+
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
+
 
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-/* Handle on hover */
+
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;

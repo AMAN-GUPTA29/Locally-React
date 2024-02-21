@@ -15,6 +15,10 @@ const customerSchema = new mongoose.Schema(
             type: String,
             required : true,
             unique: true
+        },
+        time: {
+            type: Date,
+            default: Date.now
         }
     }
 )
@@ -33,6 +37,10 @@ const sellerSchema = new mongoose.Schema(
         password :{
             type : String,
             required : true
+        },
+        time: {
+            type: Date,
+            default: Date.now
         }
 
     }
@@ -65,6 +73,10 @@ const sellerDetail = mongoose.model('sellerDetail', new mongoose.Schema({
     dislike : {
         type : Number,
         default : 0
+    },
+    time: {
+        type: Date,
+        default: Date.now
     }
 }));
 
@@ -80,6 +92,10 @@ const customerDetail = mongoose.model('customerDetail', new mongoose.Schema({
     pointer : {
         type : mongoose.SchemaTypes.ObjectId,
         ref : "customer"
+    },
+    time: {
+        type: Date,
+        default: Date.now
     }
 }))
 
@@ -102,6 +118,10 @@ const servicesModel = mongoose.model('services', new mongoose.Schema({
     pointer : {
         type : mongoose.SchemaTypes.ObjectId,
         ref : "seller"
+    },
+    time: {
+        type: Date,
+        default: Date.now
     }
 }))
 
@@ -118,6 +138,10 @@ const adminSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    time: {
+        type: Date,
+        default: Date.now
     }
 })
 const adminModel = mongoose.model('admin',adminSchema)
@@ -144,6 +168,10 @@ const  requestSchema = new mongoose.Schema(
             required:true
             
         },
+        time: {
+            type: Date,
+            default: Date.now
+        }
     }
 )
 const requestModel = mongoose.model('requests', requestSchema)
@@ -167,6 +195,14 @@ const  broadcastSchema = new  mongoose.Schema({
     message : {
         type : String,
         required : true
+    },
+    recipient : {
+        type : String,
+        required : true
+    },
+    time: {
+        type: Date,
+        default: Date.now
     }
 })
 const broadcastModel = mongoose.model('broadcast', broadcastSchema)

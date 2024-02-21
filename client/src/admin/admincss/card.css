@@ -1,0 +1,33 @@
+.card-content {
+  /* border: 1px solid #dee2e6; */
+  background-color: white; 
+}
+.idcard{
+  background-color: rgb(221, 212, 212);
+  background: #208d7d;
+  background: #2db29d;
+  /* padding: 5%; */
+}
+
+
+.idcard-rating{
+  background-color: white;
+  /* padding:8px 20px;  */
+}
+
+.idcard-footer{
+  background-color: white;
+}
+
+.idcard-phone{
+  margin: 2% 5%;
+}
+.idcard-zone{
+  /* display: flex;
+  flex-direction: row; */
+  margin: 2% 5%;
+}
+.phone-label,.zone-label{
+  margin: 2% 4%;
+}
+

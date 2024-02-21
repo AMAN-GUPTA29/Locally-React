@@ -12,9 +12,9 @@ import pranavRoutes from "./pranav-component/pranavRoutes";
 import chaitanyaroutes from "./chaitanya-component/chaitanyaroutes";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Adminbroadcast from "./admin/adminbroadcast";
-// import Navbar from "./admin/navbar";
+import ConsumerLogin from "./pages/consumerlogin";
 import AdminLand from "./admin/adminland";
+import Adminbroadcast from './admin/adminbroadcast';
 import Customer from "./admin/customer";
 import Worker from "./admin/worker";
 // import ConsumerLogin from "./pages/consumerlogin";
@@ -22,6 +22,14 @@ import LoginCust from "./pages/loginCust";
 
 import RegistrationForm from "./admin/adminRegister";
 import LoginForm from "./admin/adminLogin";
+import Requests from './admin/requests';
+import AdminRegister from './admin/adminRegister';
+
+import Navbar from './admin/navbar';
+import Nav from './admin/nav';
+import Photos from './admin/photos';
+import AdminLogin from './admin/adminLogin';
+
 
 // import { Link,Routes,Route } from 'react-router-dom';
 // import { Services } from './Services';
@@ -59,13 +67,17 @@ function App() {
         ...shayRoutes,
         ...varunRoutes,
         ...pranavRoutes,
-        ...chaitanyaroutes,
-        { path: "/adminLogin", element: <LoginForm /> },
-        { path: "/adminRegister", element: <RegistrationForm /> },
+        // ...chaitanyaroutes,
+        { path: "/adminLogin", element: <AdminLogin /> },
+        { path: "/adminRegister", element: <AdminRegister /> },
         { path: "/adminland", element: <AdminLand /> },
+        { path: "/adminbroadcast", element: <Adminbroadcast /> },
         { path: "/admincustomer", element: <Customer /> },
         { path: "/adminworker", element: <Worker /> },
-        { path: "/adminbroadcast", element: <Adminbroadcast /> },
+        {path:"/",element:<Navbar/>},
+        {path:"/nav",element:<Nav/>},
+        {path:"/photos",element:<Photos/>},
+        {path:"/requests",element:<Requests/>},
         // { path: "/ContactUs", element: <ContactUs /> },
         // { path: "/wishlist", element: <WishlistPage /> },
         // { path: "/instructor", element: <Instructor /> },

@@ -23,12 +23,12 @@ const data = {
     labels,
     datasets : [
         {
-            label:'Provided',
+            label:'Service Providers',
             data:[10,9,4,5,6,7,2],
             backgroundColor:'rgba(75, 192, 192, 1)',
         },
         {
-            label:'Cancelled',
+            label:'Customers',
             data:[2,4,6,1,7,3,8],
             backgroundColor:'rgba(255, 159, 64, 1)',
         }
