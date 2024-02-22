@@ -23,7 +23,8 @@ const redirectLogged = (req, res, next) => {
 };
 
 const redirectUnLoggedCustomer = (req, res, next) => {
-    if (!req.session.userID) {
+  console.log(req.headers)
+    if (!req.session.customer) {
         res.send({
             status: "OK",
             isLogged: false,

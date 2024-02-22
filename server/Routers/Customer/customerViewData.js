@@ -21,7 +21,7 @@ const dummyData = [
     },
 ]
 
-route.get('/', redirectUnLoggedCustomer, (req, res) => {
+route.get('/', (req, res) => {
    return res.json({data: dummyData,
         // message: "Data Sent"
     })

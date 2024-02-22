@@ -32,7 +32,7 @@ let csrfProtection = csrf({ cookie: true });
 csrfProtection = (req, res, next) => {
   next();
 };
-App.use(cookieParser());
+
 module.exports.csrfProtection = csrfProtection;
 App.use(bodyparser.urlencoded({ extended: false }));
 
@@ -47,6 +47,15 @@ App.use(
     },
   })
 );
+App.use(cookieParser());
+
+// App.use((req, res, next) => {
+//   req.session.userID = "";
+//   req.session.customer = false;
+//   req.session.seller = false;
+//   req.session.admin = false;
+//   next();
+// })
 App.use(cors());
 
 let accessLogStream = rfs.createStream("access.log", {
