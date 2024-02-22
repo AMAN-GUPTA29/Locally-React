@@ -1,12 +1,9 @@
 const {Router} = require('express')
-// const {getTasks} = require('./taskController');
 const getTasks = require('./taskController')
 const express = require('express');
 const app = express();
 
-// Other app configurations and middleware
-
-module.exports = app; // Export the app object
+module.exports = app; 
 
 const route = Router();
 
@@ -19,8 +16,7 @@ route.get("/getRegistrationTimes",getTasks.getRegistrationTimes)
 route.get('/allSellerDetails', getTasks.getAllSellerDetails);
 route.post("/sendbroadcast",getTasks.sendBroadcast);
 route.post("/registerAdmin", getTasks.registerAdmin);
-route.post("/adminLogging", getTasks.adminLogging); // New route for admin login
-// Add this route to your server
+route.post("/adminLogging", getTasks.adminLogging); 
 app.put('/api/blockSeller/:id', async (req, res) => {
     try {
       const { id } = req.params;

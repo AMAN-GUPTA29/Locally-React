@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-gray-800 to-red-700 text-white shadow-lg -mt-4">
+    <nav className="bg-gradient-to-r w-screen from-gray-800 to-red-700 text-white shadow-lg -mt-4">
       <div className="container mx-auto flex justify-between items-center py-4">
         <Link className="text-yellow-500 text-lg font-bold" to="/">
           <b>Locally</b>

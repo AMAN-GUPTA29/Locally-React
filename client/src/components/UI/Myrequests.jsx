@@ -53,7 +53,7 @@ const Myrequests = () => {
         {requests.map((item) => (
           <div
             key={item.id}
-            className={`col-12 flex flex-col justify-center m-3 p-4 px-5 border rounded-xl ${
+            className={`col-12 flex flex-col justify-center m-3 p-4 px-5 h-fit py-5 border rounded-xl ${
               item.accepted
                 ? 'bg-gradient-to-r from-green-400 to-gray-400'
                 : item.rejected

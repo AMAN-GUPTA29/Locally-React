@@ -34,15 +34,15 @@ const LoginForm = () => {
     return passwordRegex.test(password);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Email validation
     if (!validateEmail(formData.email)) {
       setErrors({ email: 'Invalid email format' });
       return;
     }
-
+  
     // Password validation
     if (!validatePassword(formData.password)) {
       setErrors({
@@ -51,14 +51,41 @@ const LoginForm = () => {
       });
       return;
     }
-     setErrors({
-        email : '',
-        password : ''
-     })
-    // Perform login logic here
-    navigate('/seller');
-    console.log('Form submitted:', formData);
+  
+    // Resetting errors
+    setErrors({ email: '', password: '' });
+  
+    try {
+      const response = await fetch('http://localhost:8080/api/seller/seller-login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+      const data = await response.json();
+  
+      if (data.success) {
+        // Login successful
+        console.log('Login successful:', data);
+        // Redirect to '/sellerview'
+        navigate('/sellerview');
+      } else {
+        // Login failed
+        alert("Email is not found please register")
+        console.log('Login failed:', data.message);
+        // Handle error (e.g., display error message)
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+      // Handle error (e.g., display error message)
+    }
   };
+  
+  
 
   return (
     <div className="min-h-screen w-96 m-auto flex flex-col items-center justify-center">
