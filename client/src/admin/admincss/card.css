@@ -17,17 +17,22 @@
 
 .idcard-footer{
   background-color: white;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .idcard-phone{
   margin: 2% 5%;
 }
-.idcard-zone{
+.idcard-address{
   /* display: flex;
   flex-direction: row; */
   margin: 2% 5%;
 }
-.phone-label,.zone-label{
+.phone-label,.address-label{
   margin: 2% 4%;
+}
+
+.like-symbol,.like-word{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 

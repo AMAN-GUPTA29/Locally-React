@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './admincss/customer.css';
 import Navbar from './navbar';
 
-const Customer = () => {
+const Worker = () => {
   // const [data, setData] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -152,4 +152,4 @@ const Customer = () => {
   );
 };
 
-export default Customer;
+export default Worker;

@@ -20,7 +20,6 @@ import Worker from "./admin/worker";
 import Requests from './admin/requests';
 import AdminRegister from './admin/adminRegister';
 
-import Navbar from './admin/navbar';
 import Nav from './admin/nav';
 import Photos from './admin/photos';
 import AdminLogin from './admin/adminLogin';

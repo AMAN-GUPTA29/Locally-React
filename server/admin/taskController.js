@@ -173,6 +173,22 @@ module.exports.getRegistrationTimes = async (req, res) => {
     }
 };
 
+module.exports.getAllSellerDetails = async (req, res) => {
+    try {
+        const sellerDetails = await TaskModel.sellerDetail.find()
+            .populate('pointer', 'name'); // Populate the seller name from the 'seller' model
+        res.status(200).json(sellerDetails.map(detail => ({
+            name: detail.pointer.name,
+            address: detail.address,
+            phone: detail.phone,
+            like: detail.like
+        })));
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+};
+
 
 
 

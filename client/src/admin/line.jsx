@@ -86,7 +86,7 @@ export default function Line() {
 
   return (
     <div className="helo">
-      <div className="he">hello</div>
+      {/* <div className="he">hello</div> */}
       <div id="chart">
         <Chart
           options={state.options}
