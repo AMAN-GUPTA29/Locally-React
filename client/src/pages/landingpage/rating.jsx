@@ -3,25 +3,25 @@ import React from "react";
 const TestimonialsSection = () => {
   return (
     <section
-      className="section-testimonials partsec2 slidetrans"
+      className="section-testimonials partsec2 slidetrans tochangesize"
       id="testimonials"
     >
-      <div className="part11">
-        <div className="testimonials-container">
-          <span className="subheading">Testimonials</span>
-          <h2 className="heading-secondary">
+      <div className="part11 tochangesize">
+        <div className="testimonials-container tochangesize">
+          <span className="subheading tochangesize">Testimonials</span>
+          <h2 className="heading-secondary tochangesize">
             Once you try it, you cant go back
           </h2>
 
-          <div className="testimonials">
-            <div className="testi-background slidetrans">
-              <figure className="testimonial">
+          <div className="testimonials tochangesize">
+            <div className="testi-background slidetrans ">
+              <figure className="testimonial ">
                 <img
                   className="testimonial-img"
                   alt="Photo of customer Dave Bryson"
                   src="../src/assets/images/img/customers/dave.jpg"
                 />
-                <blockquote className="testimonial-text">
+                <blockquote className="testimonial-text ">
                   {
                     "Exceptional service! The team was punctual and efficient. Our home looks amazing. Highly recommend this locally."
                   }
@@ -80,10 +80,13 @@ const TestimonialsSection = () => {
           </div>
         </div>
       </div>
-      <div className="part22">
-        <div className="gallery">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((index) => (
-            <figure className="gallery-item slidetrans" key={index}>
+      <div className="part22 tochangesize">
+        <div className="gallery tochangesize">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) => (
+            <figure
+              className="gallery-item slidetrans tochangesize"
+              key={index}
+            >
               <img
                 src={`../src/assets/images/image/allservice/${index}.jpg`}
                 alt={`Photo of beautifully arranged food ${index}`}
