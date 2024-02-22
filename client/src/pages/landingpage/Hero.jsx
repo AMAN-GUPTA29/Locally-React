@@ -1,32 +1,36 @@
 import React from "react";
+import "./backchange.css";
 
 const HeroSection = () => {
   return (
-    <section className="section-hero slidetrans">
-      <div className="hero">
-        <div className="hero-white">
-          <div className="hero-text-box">
-            <h1 className="heading-primary heading-main">
+    <section className="section-hero slidetrans tochangesize backimagechange">
+      <div className="hero tochangesize">
+        <div className="hero-white tochangesize">
+          <div className="hero-text-box tochangesize">
+            <h1 className="heading-primary heading-main tochangesize">
               Get things done with our trusted local professionals
             </h1>
-            <p className="hero-description discription-main">
+            <p className="hero-description discription-main tochangesize">
               Discover and connect with local businesses effortlessly on
               Locally. Strengthen your community by supporting and exploring
               neighborhood gems. Your local journey starts here.
             </p>
 
-            <div className="butt-main">
-              <a href="/login" className="btn btn--full margin-right-sm">
+            <div className="butt-main tochangesize">
+              <a
+                href="/login"
+                className="btn btn--full margin-right-sm tochangesize"
+              >
                 Get started
               </a>
 
-              <a href="#how" className="btn btn--outline">
+              <a href="#how" className="btn btn--outline tochangesize">
                 Learn more &darr;
               </a>
             </div>
           </div>
-          <div className="delivered-meals">
-            <div className="delivered-imgs">
+          <div className="delivered-meals ">
+            <div className="delivered-imgs ">
               <img
                 src="../src/assets/images/img/customers/customer-1.jpg"
                 alt="Customer photo"
@@ -52,12 +56,12 @@ const HeroSection = () => {
                 alt="Customer photo"
               />
             </div>
-            <p className="delivered-text">
+            <p className="delivered-text ">
               <span>250,000+</span> Happy Customers
             </p>
           </div>
         </div>
-        <div className="hero-img-box">
+        <div className="hero-img-box ">
           <picture>
             <source
               srcSet="../src/assets/images/img/hero.webp"
