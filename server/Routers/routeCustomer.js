@@ -8,7 +8,7 @@ const route = express.Router();
 route.use(bodyParser.urlencoded({ extended: false }))
 route.use('/data', require('./Customer/routeData.js'))
 
-route.post('/login', redirectLogged, (req, res) => {
+route.post('/login', redirectLogged, csrfProtection, (req, res) => {
     const { email, password } = req.body
 
     myModels.customerModel
