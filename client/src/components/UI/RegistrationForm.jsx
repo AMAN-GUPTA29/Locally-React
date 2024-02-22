@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaKey, FaGoogle, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-// Define validateEmail function
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
 
-// Define validatePassword function
 const validatePassword = (password) => {
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}/;
   return passwordRegex.test(password);
 };
 
-// BasicRegistrationForm component
 const BasicRegistrationForm = ({ formData, errors, handleChange, handleSubmit }) => (
   <form className="px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
     <h1 className="text-4xl font-bold mb-6 text-center">Seller Registration</h1>
@@ -26,17 +23,17 @@ const BasicRegistrationForm = ({ formData, errors, handleChange, handleSubmit })
         </span>
         <input
           className={`appearance-none border indent-4 ${
-            errors.username ? 'border-red-500' : 'border-gray-200'
+            errors.name ? 'border-red-500' : 'border-gray-200'
           } rounded w-80 h-12 py-2 px-3 pl-8 leading-tight focus:outline-none focus:shadow-outline`}
-          id="username"
-          name="username"
+          id="name"
+          name="name"
           type="text"
           placeholder="Username"
-          value={formData.username}
+          value={formData.name}
           onChange={handleChange}
         />
       </div>
-      {errors.username && <p className="text-red-500 text-xs italic">{errors.username}</p>}
+      {errors.name && <p className="text-red-500 text-xs italic">{errors.name}</p>}
     </div>
     <div className="flex flex-col mt-2">
       <label className="text-lg">Email</label>
@@ -91,7 +88,6 @@ const BasicRegistrationForm = ({ formData, errors, handleChange, handleSubmit })
   </form>
 );
 
-// AdditionalDetailsForm component
 const AdditionalDetailsForm = ({ formData, errors, handleChange, handleSubmit }) => (
   <form className="px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
     <h1 className="text-4xl font-bold mb-6 text-center">Additional Details</h1>
@@ -157,10 +153,9 @@ const AdditionalDetailsForm = ({ formData, errors, handleChange, handleSubmit })
   </form>
 );
 
-// Main RegistrationForm component
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
     aadhar: '',
@@ -169,7 +164,7 @@ const RegistrationForm = () => {
   });
 
   const [errors, setErrors] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
     aadhar: '',
@@ -189,59 +184,89 @@ const RegistrationForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let valid = true;
-
-    // Basic registration form validation
+  
     if (step === 1) {
-      if (!formData.username.trim()) {
-        setErrors((prevErrors) => ({ ...prevErrors, username: 'Username is required' }));
+      if (!formData.name.trim()) {
+        setErrors((prevErrors) => ({ ...prevErrors, name: 'Username is required' }));
         valid = false;
       }
       if (!formData.email.trim() || !validateEmail(formData.email)) {
         setErrors((prevErrors) => ({ ...prevErrors, email: 'Valid email is required' }));
         valid = false;
       }
-      if (!formData.password.trim()) {
+      if (!formData.password.trim() || !validatePassword(formData.password)) {
+        setErrors((prevErrors) => ({ ...prevErrors, password: 'Password is required' }));
+        valid = false;
+      }
+    }
+  
+    if (step === 2) {
+      if (!formData.aadhar.trim() || formData.aadhar.trim().length < 12) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          password: 'Password is required',
+          aadhar: 'Aadhar should be 12 digits',
+        }));
+        valid = false;
+      }
+      if (!formData.address.trim()) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          address: 'Address is required',
+        }));
+        valid = false;
+      }
+      if (!formData.phoneNumber.trim() || formData.phoneNumber.trim().length < 10) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          phoneNumber: 'Phone Number should be 10 digits',
         }));
         valid = false;
       }
     }
-
-    // Additional details form validation
-    if (step === 2) {
-      if (!formData.aadhar.trim()) {
-        setErrors((prevErrors) => ({ ...prevErrors, aadhar: 'Aadhar is required' }));
-        valid = false;
-      }
-      if (!formData.address.trim()) {
-        setErrors((prevErrors) => ({ ...prevErrors, address: 'Address is required' }));
-        valid = false;
-      }
-      if (!formData.phoneNumber.trim()) {
-        setErrors((prevErrors) => ({ ...prevErrors, phoneNumber: 'Phone Number is required' }));
-        valid = false;
-      }
-    }
-
+  
     if (valid) {
-      // Move to the next step or submit the form
       if (step === 1) {
         setStep(2);
       } else {
-        navigate('/seller');
-        console.log('Form submitted:', formData);
+        try {
+          const response = await fetch('http://localhost:8080/api/seller/register-seller', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              password: formData.password,
+              aadhar: formData.aadhar,
+              address: formData.address,
+              phoneNumber: formData.phoneNumber,
+            }),
+          });
+          const data = await response.json();
+          if (response.ok) {
+            setFormData((prevData) => ({
+              ...prevData,
+              sellerId: data.sellerId,
+            }));
+            setStep(3); 
+            navigate('/sellerview'); 
+          } else {
+            console.error('Failed to register seller:', data.message);
+          }
+        } catch (err) {
+          console.error('Failed to register seller:', err);
+        }
       }
     }
   };
+  
 
   return (
     <div className="min-h-screen w-96 m-auto flex flex-col items-center justify-center">
-      {/* Conditionally render the appropriate form based on the current step */}
       {step === 1 ? (
         <BasicRegistrationForm
           formData={formData}

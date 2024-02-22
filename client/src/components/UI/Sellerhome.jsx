@@ -59,20 +59,20 @@ const SellerHome = () => {
   return (
     <div className="container position-relative">
       <Navbar/>
-      <div className="buttons my-3 flex justify-evenly">
-        <button className="btn btn-dark px-4" onClick={() => handleButtonClick('new')} role="button" style={{ backgroundColor: 'coral', color: 'white' }}>
+      <div className="buttons my-4 flex justify-evenly">
+        <button className="btn btn-dark " onClick={() => handleButtonClick('new')} role="button" style={{ backgroundColor: 'coral', color: 'white' }}>
           New {requests && `(${requests})`}
         </button>
-        <button className="btn btn-dark px-4" onClick={() => handleButtonClick('total')} role="button" style={{ backgroundColor: 'green', color: 'white' }}>
+        <button className="btn btn-dark " onClick={() => handleButtonClick('total')} role="button" style={{ backgroundColor: 'green', color: 'white' }}>
           Total{completedRequests && `(${completedRequests})`}
         </button>
-        <button className="btn btn-dark px-4" onClick={() => handleButtonClick('stars')} role="button" style={{ backgroundColor: 'orange', color: 'white' }}>
-          Stars {rating && `(${rating})`}
+        <button className="btn btn-dark " onClick={() => handleButtonClick('stars')} role="button" style={{ backgroundColor: 'orange', color: 'white' }}>
+          Stars {rating &&` (${rating})`}
         </button>
         {reviewsClicked ? (
-          <span className="btn btn-dark px-4" style={{ backgroundColor: 'blue', color: 'white' }}>Excellent</span>
+          <span className="btn btn-dark " style={{ backgroundColor: 'blue', color: 'white' }}>Excellent</span>
         ) : (
-          <button className="btn btn-dark px-4" onClick={handleReviewsClick} role="button" style={{ backgroundColor: 'blue', color: 'white' }}>
+          <button className="btn btn-dark" onClick={handleReviewsClick} role="button" style={{ backgroundColor: 'blue', color: 'white' }}>
             Reviews
           </button>
         )}
@@ -85,7 +85,7 @@ const SellerHome = () => {
       <div className="bg-dark-subtle p-3 min-w-48 text-gray-800 text-xl font-bold">Net income---</div>
       <div className="bg-dark opacity-75 text-white p-3 min-w-40">&#8377;12000</div>
     </div>
-    <div className="flex justify-center m-1">
+    <div className="flex justify-center m-2">
     <div className="bg-dark-subtle p-3 min-w-48 text-gray-800 text-xl font-bold">Daily income---</div>
       <div className="bg-dark opacity-75 text-white p-3 min-w-40">&#8377;400</div>
     </div>
