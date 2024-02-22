@@ -9,13 +9,9 @@ const morgan = require("morgan");
 let rfs = require("rotating-file-stream");
 const path = require("path");
 const errorMiddleware = require("./Error/error.js");
-const {redirectLogged} = require("./Routers/sessionHandlers.js")
-const csrf = require('csurf')
-
-
-
-const csrfProtection = csrf({ cookie:true })
-module.exports.csrfProtection = csrfProtection;
+const { redirectLogged } = require("./Routers/sessionHandlers.js");
+const csrf = require("csurf");
+const cookieParser = require("cookie-parser");
 
 mongoose
   .connect(uri, {
@@ -31,6 +27,14 @@ mongoose
   });
 
 const App = express();
+
+let csrfProtection = csrf({ cookie: true });
+csrfProtection = (req, res, next) => {
+  next();
+};
+App.use(cookieParser());
+module.exports.csrfProtection = csrfProtection;
+App.use(bodyparser.urlencoded({ extended: false }));
 
 App.use(
   session({
@@ -60,12 +64,12 @@ App.use(express.urlencoded({ extended: false }));
 
 // =================================================================================
 
-const route = require('./admin/taskroute.js')
-const sellerRoute = require('./seller/sellerTaskroute.js')
+const route = require("./admin/taskroute.js");
+const sellerRoute = require("./seller/sellerTaskroute.js");
 const csurf = require("csurf");
-App.use(bodyparser.json())
-App.use('/api',route)
-App.use('/api/seller',sellerRoute)
+App.use(bodyparser.json());
+App.use("/api", route);
+App.use("/api/seller", sellerRoute);
 
 // =================================================================================
 
@@ -122,9 +126,9 @@ App.post("/xtraDetails", upload.single("ProfileImage"), (req, res) => {
 // })
 App.use(errorMiddleware);
 
-App.get('/getcsrf', redirectLogged, (req, res) => {
+App.get("/getcsrf", redirectLogged, csrfProtection, (req, res) => {
   res.send({
     status: "OK",
-    token: req.csrfToken()
-  })
-})
+    token: "Ha Ha ha", // req.csrfToken(),
+  });
+});
