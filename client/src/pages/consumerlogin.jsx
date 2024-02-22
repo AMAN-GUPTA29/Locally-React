@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import * as Components from "./consumerloginstyle";
 import "./loginsignup.css";
+import { useNavigate } from "react-router-dom";
 
 function AuthenticationContainer() {
   const [signIn, toggle] = React.useState(true);
@@ -32,7 +33,7 @@ function AuthenticationContainer() {
   // };
 
   // var bodyyy;
-
+  let navigator = useNavigate();
   useEffect(() => {
     // event.preventDefault();
     async function name_fxn() {
@@ -65,6 +66,10 @@ function AuthenticationContainer() {
 
       const data = await response.json();
       console.log(data);
+
+      if (data.message === "Login Authenticated") {
+        navigator("/customerView");
+      }
 
       // if (data.success) {
       //   console.log(response);
