@@ -5,11 +5,12 @@ import "./App.css";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Rootlayout";
-import HomePage from "./pages/homePage";
+import HomePage from "./pages/HomePage";
 import shayRoutes from "./shay-component/shayRoutes";
 import varunRoutes from "./components/varunRoutes";
 import pranavRoutes from "./pranav-component/pranavRoutes";
-import chaitanyaroutes from "./chaitanya-component/chaitanyaroutes";
+// import chaitanyaroutes from "./chaitanya-component/chaitanyaRoutes.jsx";
+import ChaitanyaROUTES_ from "./chaitanya-component/ChaitanyaROUTES_";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ConsumerLogin from "./pages/consumerlogin";
@@ -61,7 +62,7 @@ function App() {
         ...shayRoutes,
         ...varunRoutes,
         ...pranavRoutes,
-        ...chaitanyaroutes,
+        ...ChaitanyaROUTES_,
         { path: "/adminLogin", element: <AdminLogin /> },
         { path: "/adminRegister", element: <AdminRegister /> },
         { path: "/adminland", element: <AdminLand /> },
