@@ -2,11 +2,13 @@ body {
 }
 
 .loginsignup {
+  transform: scale(1.5);
   align-self: center;
   margin: auto;
   display: flex;
   justify-content: center;
   padding-top: 200;
+  flex-wrap: wrap;
 }
 
 .tocent {

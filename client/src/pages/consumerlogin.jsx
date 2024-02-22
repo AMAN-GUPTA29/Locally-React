@@ -26,7 +26,7 @@ function AuthenticationContainer() {
               <Components.Anchor href="#">
                 Forgot your password?
               </Components.Anchor>
-              <Components.Button>Sigin In</Components.Button>
+              <Components.Button  >Sign In</Components.Button>
             </Components.Form>
           </Components.SignInContainer>
 
@@ -48,7 +48,7 @@ function AuthenticationContainer() {
                   Enter Your personal details and start journey with us
                 </Components.Paragraph>
                 <Components.GhostButton onClick={() => toggle(false)}>
-                  Sigin Up
+                  Sign Up
                 </Components.GhostButton>
               </Components.RightOverlayPanel>
             </Components.Overlay>
