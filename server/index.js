@@ -113,3 +113,10 @@ App.post("/xtraDetails", upload.single("ProfileImage"), (req, res) => {
 //     res.send("Hi seller")
 // })
 App.use(errorMiddleware);
+
+App.get('/getcsrf', (req, res) => {
+  res.send({
+    status: "OK",
+    token: "MyToken"
+  })
+})
