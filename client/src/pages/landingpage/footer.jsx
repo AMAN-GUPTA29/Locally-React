@@ -69,6 +69,11 @@ const Footerland = () => {
               <p className="footeer-headinng">Account</p>
               <ul className="footeer-nav">
                 <li>
+                  <a className="footeer-link" href="/adminLogin">
+                    Admin Login
+                  </a>
+                </li>
+                <li>
                   <a className="footeer-link" href="#">
                     Create account
                   </a>
