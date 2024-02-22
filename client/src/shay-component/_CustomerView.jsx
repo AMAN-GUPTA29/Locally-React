@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import logo1 from "./assets/imgs/1.png";
 import logo2 from "./assets/imgs/2.png";
 import { json } from "react-router-dom";
+// import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";;
 
 const dummyData = [
   {
@@ -26,6 +28,8 @@ const dummyData = [
 ];
 
 export default () => {
+  const navigator = useNavigate();
+
   function filter() {
     let palceForm = document.getElementById("form");
     palceForm.classList.toggle("hidden");
@@ -41,9 +45,15 @@ export default () => {
       );
       const body = await response.json();
       setTimeout(() => {
-        console.log(body.data);
-        setData(body.data);
-        setLoading(false);
+        console.log(body)
+        if(body.isLogged === false){
+          // <Navigate to={'/'} />
+          navigator('/')
+        }else{
+            console.log(body);
+            setData(body.data);
+            setLoading(false);
+        }
       }, 1000);
     }
 

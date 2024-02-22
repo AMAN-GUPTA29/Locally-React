@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const myModels = require('./../MongoUtils/models.js');
+const {redirectLogged} = require('./sessionHandlers.js')
 
 const route = express.Router();
 route.use(bodyParser.urlencoded({ extended: false }))
 route.use('/data', require('./Customer/routeData.js'))
 
-route.post('/login', (req, res) => {
+route.post('/login', redirectLogged, (req, res) => {
     const { email, password } = req.body
 
     myModels.customerModel

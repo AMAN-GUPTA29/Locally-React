@@ -1,4 +1,5 @@
 const express = require('express');
+const {redirectUnLoggedCustomer} = require('./../sessionHandlers');
 
 const route = express.Router();
 
@@ -20,7 +21,7 @@ const dummyData = [
     },
 ]
 
-route.get('/', (req, res) => {
+route.get('/', redirectUnLoggedCustomer, (req, res) => {
    return res.json({data: dummyData,
         // message: "Data Sent"
     })
