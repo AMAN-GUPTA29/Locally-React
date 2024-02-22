@@ -9,6 +9,13 @@ const morgan = require("morgan");
 let rfs = require("rotating-file-stream");
 const path = require("path");
 const errorMiddleware = require("./Error/error.js");
+const {redirectLogged} = require("./Routers/sessionHandlers.js")
+const csrf = require('csurf')
+
+
+
+const csrfProtection = csrf({ cookie:true })
+module.exports.csrfProtection = csrfProtection;
 
 mongoose
   .connect(uri, {
@@ -55,6 +62,7 @@ App.use(express.urlencoded({ extended: false }));
 
 const route = require('./admin/taskroute.js')
 const sellerRoute = require('./seller/sellerTaskroute.js')
+const csurf = require("csurf");
 App.use(bodyparser.json())
 App.use('/api',route)
 App.use('/api/seller',sellerRoute)
@@ -114,9 +122,9 @@ App.post("/xtraDetails", upload.single("ProfileImage"), (req, res) => {
 // })
 App.use(errorMiddleware);
 
-App.get('/getcsrf', (req, res) => {
+App.get('/getcsrf', redirectLogged, (req, res) => {
   res.send({
     status: "OK",
-    token: "MyToken"
+    token: req.csrfToken()
   })
 })

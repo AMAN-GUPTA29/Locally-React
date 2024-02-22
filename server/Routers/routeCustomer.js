@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const myModels = require('./../MongoUtils/models.js');
 const {redirectLogged} = require('./sessionHandlers.js')
+const {csrfProtection} = require("./../index.js")
 
 const route = express.Router();
 route.use(bodyParser.urlencoded({ extended: false }))
