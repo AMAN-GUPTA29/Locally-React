@@ -13,7 +13,7 @@ export default [
     {path :"/customerrequest" , element:<Customerrequest/>},
     {path :"/history" , element:<History/>},
     {path :"/consumerlogin/welcome" , element:<RegisterCustomer/>},
-    {path :"seller/login/welcome" , element:<RegisterSeller/>}
+    {path :"seller/register/welcome" , element:<RegisterSeller/>}
 
 
 
