@@ -23,6 +23,16 @@ body {
 
 /****************GENRAL**************************/
 
+.tochangesize {
+  font-size: 62.5%;
+  zoom: 90%;
+}
+
+.tochangesize2 {
+  font-size: 62.5%;
+  zoom: 80%;
+}
+
 .testy {
   height: 300px;
   width: 100%;
@@ -219,8 +229,8 @@ body {
   background-color: #f8edeb;
 
   /* Because we want header to be sticky later */
-  height: 4rem;
-  padding: 0 4.8rem;
+  height: 6rem;
+  padding: 2rem 4.8rem;
   position: relative;
 }
 
@@ -230,7 +240,7 @@ body {
 }
 
 .main-nav {
-  margin-left: 46%;
+  margin-left: 40%;
 }
 
 .main-nav-list {
@@ -309,7 +319,7 @@ body {
   font-family: "Playfair Display", serif;
   font-size: 4.4rem;
   line-height: 1.2;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 
 .heading-tertiary {
@@ -413,7 +423,7 @@ body {
 }
 
 .butt-main {
-  padding-left: 25%;
+  padding-left: 0%;
 }
 
 .delivered-text {
@@ -446,9 +456,10 @@ body {
 }
 
 .logos img {
-  height: 6rem;
+  height: 4rem;
   filter: brightness(0);
   opacity: 50%;
+  margin-right: 2rem;
 }
 
 .part-sec {
@@ -469,13 +480,13 @@ body {
   border-left: 100px;
   background-color: #cb997e;
   border-left: 100px solid #333;
-  border-bottom: 500px solid transparent;
+  border-bottom: 620px solid transparent;
   color: #333;
 }
 
 .secondary-changes {
   padding-left: 10%;
-  padding-top: 10%;
+  padding-top: 8%;
   letter-spacing: 2px;
 }
 
@@ -486,7 +497,6 @@ body {
 }
 
 .postion-change {
-  padding-left: 25%;
 }
 
 .content-para-2 {
@@ -651,7 +661,7 @@ body {
 }
 
 .marghead {
-  margin-left: 5%;
+  /* margin-left: 5%; */
 }
 
 .margbutton {

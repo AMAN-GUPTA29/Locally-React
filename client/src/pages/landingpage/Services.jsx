@@ -2,16 +2,16 @@ import React from "react";
 
 const ServicesSection = () => {
   return (
-    <section className="slidetrans">
-      <section className="section-how" id="how">
-        <div className="container">
-          <span className="subheading">Services</span>
+    <section className="slidetrans tochangesize">
+      <section className="section-how tochangesize" id="how">
+        <div className="container tochangesize">
+          <span className="subheading ">Services</span>
           <h2 className="heading-secondary">
             3 Types of Services provided by us...
           </h2>
         </div>
 
-        <div className="notflex conntainer grid grid--2-cols grid--center-v ">
+        <div className="notflex conntainer grid grid--2-cols grid--center-v tochangesize">
           {/* STEP 01 */}
           <div className="step-text-box slidetrans">
             <p className="step-number">01</p>
