@@ -69,7 +69,6 @@ function App() {
         { path: "/adminbroadcast", element: <Adminbroadcast /> },
         { path: "/admincustomer", element: <Customer /> },
         { path: "/adminworker", element: <Worker /> },
-        {path:"/",element:<Navbar/>},
         {path:"/nav",element:<Nav/>},
         {path:"/photos",element:<Photos/>},
         {path:"/requests",element:<Requests/>},

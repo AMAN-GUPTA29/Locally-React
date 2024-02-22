@@ -11,7 +11,7 @@ export default [
     { path: "/seller/login", element: <LoginForm /> },
     { path: "/seller/register", element: <RegistrationForm /> },
     { path: "/sellerview", element: <Sellerhome /> },
-    { path: "/chat", element: <Chat /> },
+    { path: "/seller/chat", element: <Chat /> },
     { path: "/seller/request", element: <Myrequests /> },
     { path: "/seller/broadcast", element: <Broadcast /> },
 ]

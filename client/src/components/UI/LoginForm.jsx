@@ -1,10 +1,11 @@
+
+
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
 import { FaEnvelope, FaKey, FaGoogle, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import './LoginForm.css'
 
 const LoginForm = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -13,6 +14,7 @@ const LoginForm = () => {
   const [errors, setErrors] = useState({
     email: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,26 +56,26 @@ const LoginForm = () => {
         password : ''
      })
     // Perform login logic here
+    navigate('/seller');
     console.log('Form submitted:', formData);
-    navigate('/sellerview')
   };
 
   return (
-    <div className="min-h-screen w-fit m-auto flex flex-col items-center justify-center text-black">
+    <div className="min-h-screen w-96 m-auto flex flex-col items-center justify-center">
       <form className=" px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-        <h1 className="text-5xl font-extrabold mb-6 text-center">Seller Login</h1>
-        <div className="flex flex-col items-start mt-1">
-          <label className="text-2xl" htmlFor="email">
+        <h1 className="text-4xl font-bold mb-6 text-center">Seller Login</h1>
+        <div className="flex flex-col mt-1">
+          <label className="text-lg">
             Email
           </label>
           <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-10">
-              <FaEnvelope className="text-gray-800 text-2xl" />
+            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+              <FaEnvelope className="text-gray-400" />
             </span>
             <input
-              className={`appearance-none border border-black ${
-                errors.email ? 'border-red-500' : 'border-black'
-              } rounded w-[50rem] h-16 py-6 px-20 indent-8 text-xl  focus:outline-none focus:shadow-outline bg-transparent`}
+              className={`appearance-none border indent-4 ${
+                errors.email ? 'border-red-500' : 'border-gray-200'
+              } rounded w-80 h-12 py-2 px-3 pl-8 leading-tight focus:outline-none focus:shadow-outline`}
               id="email"
               name="email"
               type="email"
@@ -85,18 +87,18 @@ const LoginForm = () => {
           </div>
           {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
         </div>
-        <div className="flex flex-col items-start mt-2">
-          <label className="text-2xl" htmlFor="password">
+        <div className="flex flex-col mt-2">
+          <label className="text-lg" >
             Password
           </label>
           <div className="relative mt-1">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-10">
-              <FaKey className="text-gray-800 text-2xl" />
+            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+              <FaKey className="text-gray-400" />
             </span>
             <input
-              className={`appearance-none border border-black ${
+              className={`appearance-none border indent-4 ${
                 errors.password ? 'border-red-500' : 'border-gray-200'
-              } rounded w-[50rem] h-16 py-6 px-20 pl-8 indent-8 text-xl leading-tight focus:outline-none focus:shadow-outline bg-transparent`}
+              } rounded w-80 h-12 py-2 px-3 pl-8 leading-tight focus:outline-none focus:shadow-outline`}
               id="password"
               name="password"
               type="password"
@@ -108,9 +110,9 @@ const LoginForm = () => {
           </div>
           {errors.password && <p className="text-red-500 text-xs italic">{errors.password}</p>}
         </div>
-        <div className=" mt-5">
+        <div className="input-group  mt-5">
           <button
-            className="bg-black w-[22rem]  hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black w-full hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Login
@@ -137,5 +139,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-
