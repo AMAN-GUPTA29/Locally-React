@@ -73,9 +73,7 @@ module.exports.registerAdmin = async (req, res) => {
     try {
         const { name, email, password } = req.body;
         console.log(name,email,password)
-        // const existingAdmin = await TaskModel.adminModel.findOne({ email });
-        // const existingAdmin = await TaskModel.customerModel.findOne({ email });
-        const existingAdmin = await TaskModel.sellerModel.findOne({ email });
+        const existingAdmin = await TaskModel.adminModel.findOne({ email });
         if (existingAdmin) {
             return res.status(400).json({ message: "Email already exists" });
         }

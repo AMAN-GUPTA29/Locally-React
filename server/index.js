@@ -4,6 +4,7 @@ const uri = require("./MongoUtils/mongo_pass.js");
 const mongoose = require('mongoose')
 const cors = require('cors')
 const routes = require('./admin/taskroute.js')
+const sellerRoutes = require('./seller/sellerTaskroute.js')
 const bodyParser = require('body-parser'); // Add this line
 
 
@@ -45,6 +46,7 @@ App.listen(8080, () => {
 
 // =================================================================================
 App.use('/api',routes);
+App.use('/api/seller',sellerRoutes);
 
 App.use('/api/customer', require('./Routers/routeCustomer'));
 App.use('/api/customerview/data', require('./Routers/Customer/customerViewData.js'));

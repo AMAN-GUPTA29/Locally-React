@@ -53,7 +53,7 @@ const Transactions = () => {
   return (
     <>
       <h2 className="text-center text-5xl font-bold italic mt-10 mb-2 text-Black-700">Transactions</h2>
-      <table className="table table-striped table-hover table-bordered text-white bg-purple-400">
+      <table className="table table-striped table-hover table-bordered text-white bg-purple-900">
         <thead className="table-dark">
           <tr>
             <th scope="col">#</th>
@@ -81,7 +81,7 @@ const Transactions = () => {
         {
           show && 
           <caption className="text-end">
-          <button onClick={()=>{const temp={
+          <button className="text-white" onClick={()=>{const temp={
             id: 6,
             name: "Akhil",
             code: "@ 277",
