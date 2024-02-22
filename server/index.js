@@ -8,6 +8,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 let rfs = require("rotating-file-stream");
 const path = require("path");
+const errorMiddleware = require("./Error/error.js");
 
 mongoose
   .connect(uri, {
@@ -87,12 +88,6 @@ App.post("/xtraDetails", upload.single("ProfileImage"), (req, res) => {
   console.log(req.file);
   res.send("Hi consumer");
 });
-App.post("/xtraDetails2", upload.single("ProfileImage2"), (req, res) => {
-    console.log("hi seller");
-    console.log(`File Name : ${req.file.filename}`);
-    console.log(req.file);
-    res.send("Hi seller");
-  });
 // const storage2 = multer.diskStorage({
 //     destination: function (req, file, cb) {
 //       cb(null, '/uploads2')
@@ -109,3 +104,4 @@ App.post("/xtraDetails2", upload.single("ProfileImage2"), (req, res) => {
 //     console.log(req.file ,req.body);
 //     res.send("Hi seller")
 // })
+App.use(errorMiddleware);
