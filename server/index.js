@@ -53,6 +53,14 @@ App.use(express.urlencoded({ extended: false }));
 
 // =================================================================================
 
+const route = require('./admin/taskroute.js')
+const sellerRoute = require('./seller/sellerTaskroute.js')
+App.use(bodyparser.json())
+App.use('/api',route)
+App.use('/api/seller',sellerRoute)
+
+// =================================================================================
+
 App.use("/api/customer", require("./Routers/routeCustomer"));
 App.use(
   "/api/customerview/data",
