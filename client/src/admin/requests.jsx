@@ -14,7 +14,7 @@ export default function Requests() {
   return (
     <div>
       <Navbar />
-      <div className="relative overflow-x-auto m-5">
+      <div className="relative overflow-x-auto m-5 container">
         <table className="w-full text-sm text-left ">
           <thead className="text-xs  uppercase bg-gray-50">
             <tr>

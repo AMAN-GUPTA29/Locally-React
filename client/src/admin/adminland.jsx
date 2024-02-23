@@ -97,7 +97,7 @@ export default function AdminLand() {
                         <Photos />
                     </div>
                 </div>
-                <div className="w-1/4 m-4 px-7 py-4 boxes border blocked grid grid-cols-3 gap-4 rounded-xl">
+                {/* <div className="w-1/4 m-4 px-7 py-4 boxes border blocked grid grid-cols-3 gap-4 rounded-xl">
                     <div className="name col-span-2 text-xl font-bold">Blocked</div>
                     <div className="blocked-number rounded-full text-center text-2xl font-bold">6</div>
                     <div className="contact-img row-end-3">
@@ -106,13 +106,15 @@ export default function AdminLand() {
                     <div className="contact-photos col-span-2 mr-10">
                         <Photos />
                     </div>
-                </div>
+                </div> */}
             </div>
 
+            <div className="m-4 my-7">
             <Line />
+            </div>
 
-            <div className="topRated-heading text-green-700 m-3 font-semibold text-2xl">Top Liked Service Providers</div>
-            <div className="overflow-x-auto whitespace-no-wrap">
+            <div className="topRated-heading text-green-700 m-3 font-semibold text-2xl my-7">Top Liked Service Providers</div>
+            <div className="overflow-x-auto whitespace-no-wrap my-5">
                 <div className="flex">
                     {sellers
                         .filter((seller) => seller.like > 10)
@@ -140,7 +142,7 @@ export default function AdminLand() {
             </div>
 
 
-            <div className="bg-gray-900 p-3 my-2 mx-5 rounded-3 text-center">
+            <div className="bg-gray-900 p-3 my-5 mx-5 rounded-3 text-center">
                 <h2 className="m-2 text-white pb-4">Manage Your Subscribers</h2>
                 <div className="grid grid-cols-2 gap-4 justify-items-center">
                     <Link className="bg-white text-black mx-5 mb-3 rounded-lg overflow-hidden" to="/admincustomer">

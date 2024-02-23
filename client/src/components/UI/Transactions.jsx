@@ -81,7 +81,7 @@ const Transactions = () => {
         {
           show && 
           <caption className="text-end">
-          <button className="text-white" onClick={()=>{const temp={
+          <button className="text-white bg-black" onClick={()=>{const temp={
             id: 6,
             name: "Akhil",
             code: "@ 277",

@@ -47,7 +47,7 @@ export default function Line() {
         size: 0,
       },
       title: {
-        text: "User Registration Times",
+        text: "Registrations",
         align: "left",
       },
       fill: {
