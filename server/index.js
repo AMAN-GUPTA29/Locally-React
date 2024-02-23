@@ -71,6 +71,8 @@ App.listen(8080, () => {
 
 App.use(express.urlencoded({ extended: false }));
 
+App.use(errorMiddleware);
+
 // =================================================================================
 
 const route = require("./admin/taskroute.js");
@@ -115,7 +117,15 @@ App.post("/xtraDetails", upload.single("ProfileImage"), (req, res) => {
   console.log("hi consumer");
   console.log(`File Name : ${req.file.filename}`);
   console.log(req.file);
-  res.send("Hi consumer");
+  // res.send({
+  //   status: "ok",
+  //   uploaded: true
+  // });
+  res.send(`<div>
+    <h1 class="m-5">Data Sent</h1>
+    <a href="http://localhost:5173/sellerview">Goto SellerView</a>
+    </div>`
+  )
 });
 // const storage2 = multer.diskStorage({
 //     destination: function (req, file, cb) {
@@ -133,7 +143,7 @@ App.post("/xtraDetails", upload.single("ProfileImage"), (req, res) => {
 //     console.log(req.file ,req.body);
 //     res.send("Hi seller")
 // })
-App.use(errorMiddleware);
+
 
 App.get("/getcsrf", redirectLogged, csrfProtection, (req, res) => {
   res.send({
