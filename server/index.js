@@ -34,7 +34,7 @@ csrfProtection = (req, res, next) => {
 };
 
 module.exports.csrfProtection = csrfProtection;
-App.use(bodyparser.urlencoded({ extended: false }));
+App.use(bodyparser.urlencoded({ extended: false }));  // ===============================================================================
 
 App.use(
   session({
@@ -47,7 +47,7 @@ App.use(
     },
   })
 );
-App.use(cookieParser());
+App.use(cookieParser());                              // ===============================================================================
 
 // App.use((req, res, next) => {
 //   req.session.userID = "";
@@ -56,26 +56,26 @@ App.use(cookieParser());
 //   req.session.admin = false;
 //   next();
 // })
-App.use(cors());
+App.use(cors());                                     // ===============================================================================
 
 let accessLogStream = rfs.createStream("access.log", {
   interval: "1d",
   path: path.join(__dirname, "log"),
 });
 
-App.use(morgan("combined", { stream: accessLogStream }));
+App.use(morgan("combined", { stream: accessLogStream })); // ===============================================================================
 
 App.listen(8080, () => {
   console.log("\nListening to \nhttp://localhost:8080/");
 });
 
-App.use(express.urlencoded({ extended: false }));
+// App.use(express.urlencoded({ extended: false }));
 
-App.use(errorMiddleware);
+App.use(errorMiddleware);                               // ===============================================================================
 
 // =================================================================================
 
-const route = require("./admin/taskroute.js");
+const route = require("./admin/taskroute.js");          // ===============================================================================
 const sellerRoute = require("./seller/sellerTaskroute.js");
 const csurf = require("csurf");
 App.use(bodyparser.json());
@@ -109,7 +109,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({
+const upload = multer({                           // ===============================================================================
   storage: storage,
 });
 
