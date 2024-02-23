@@ -78,7 +78,7 @@ module.exports.registerAdmin = async (req, res) => {
             return res.status(400).json({ message: "Email already exists" });
         }
 
-        const newAdmin = new TaskModel.sellerModel({
+        const newAdmin = new TaskModel.adminModel({
             name,
             email,
             password,
@@ -102,7 +102,7 @@ module.exports.adminLogging = async (req, res) => {
         const admin = await TaskModel.adminModel.findOne({ email });
         console.log("Admin:", admin);
 
-        if (admin) {
+        if (admin && admin.password === password) {
             console.log("Login authenticated");
             req.session.userID = admin._id;
             req.session.customer = false;

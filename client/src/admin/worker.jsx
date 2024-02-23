@@ -59,7 +59,7 @@ const Worker = () => {
                 <th className="px-4 py-2">Name</th>
                 <th className="px-4 py-2">Email</th>
                 <th className="px-4 py-2">Id</th>
-                <th className="px-4 py-2">Action</th>
+                {/* <th className="px-4 py-2">Action</th> */}
               </tr>
             </thead>
             <tbody>
@@ -68,7 +68,7 @@ const Worker = () => {
                   <td className="border px-4 py-2">Mr.{user.name}</td>
                   <td className="border px-4 py-2">{user.email}</td>
                   <td className="border px-4 py-2">{user._id}</td>
-                  <td className="border px-4 py-2">
+                  {/* <td className="border px-4 py-2">
                     {user.blocked ? (
                       <button
                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
@@ -92,7 +92,7 @@ const Worker = () => {
                         </button>
                       </>
                     )}
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

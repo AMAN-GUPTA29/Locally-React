@@ -165,7 +165,7 @@ const Chat = () => {
 
         {/* Right side with chat */}
         <div className="w-3/4 p-4 bg-gray-100">
-          <div className="card">
+          <div className="card min-h-[40rem]">
             {activeChat && (
               <>
                 <div className="card-header msg_head">
