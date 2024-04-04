@@ -19,6 +19,10 @@ const customerSchema = new mongoose.Schema(
         time: {
             type: Date,
             default: Date.now
+        },
+        blocked: {
+            type: Boolean,
+            default: false
         }
     }
 )

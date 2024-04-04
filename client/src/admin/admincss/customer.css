@@ -1,4 +1,4 @@
-.modal-overlay {
+/* .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
-}
+} */
 
 .container{
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

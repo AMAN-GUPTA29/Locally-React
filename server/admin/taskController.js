@@ -1,4 +1,5 @@
 const TaskModel = require('../MongoUtils/models');
+const jwt = require('jsonwebtoken');
 
 module.exports.sendBroadcast = async (req, res) => {
     try {
@@ -108,11 +109,19 @@ module.exports.adminLogging = async (req, res) => {
             req.session.customer = false;
             req.session.seller = false;
             req.session.admin = true;
+            const token = jwt.sign({
+                userId:admin._id,
+                userEmail:admin.email
+            },"TOKEN",
+            {expiresIn:"24h"}
+            )
+            console.log(`token : ${token}`)
             res.json({
                 success: true,
                 status: "OK",
                 code: 200,
-                message: "Login Authenticated"
+                message: "Login Authenticated",
+                token:token
             });
         } else {
             console.log("Invalid credentials");

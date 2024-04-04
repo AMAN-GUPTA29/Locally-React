@@ -17,39 +17,39 @@ import serviceproviderimg from './adminimages/serviceproviderimg.jpg';
 import Card from "./card";
 import Line from "./line";
 import axios from 'axios';
+import { useAuth } from "../AuthContext";
 
 export default function AdminLand() {
+    const { authUserToken } = useAuth();
     const [sellers, setSellers] = useState([]);
     const [customerCount,setCustomerCount] = useState([]);
     const [sellerCount,setSellerCount] = useState([]);
     const [serviceCount,setServiceCount] = useState([])
     useEffect(() => {
-        fetch('http://localhost:8080/api/customerDetails')
-          .then(response => response.json())
-          .then(data => setSellerCount(data))
-          .catch(error => console.error('Error fetching data:', error));
-        console.log(sellerCount);
-
-        fetch('http://localhost:8080/api/sellerDetails')
-        .then(response => response.json())
-        .then(data => setCustomerCount(data))
-        .catch(error => console.error('Error fetching data:', error));
-      console.log(customerCount);
-
-      fetch('http://localhost:8080/api/requests')
-        .then(response => response.json())
-        .then(data => setServiceCount(data))
-        .catch(error => console.error('Error fetching data:', error));
-      console.log(serviceCount);
-
-      const fetchData = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/api/allSellerDetails');
-            setSellers(response.data);
-        } catch (err) {
-            console.error(err);
-        }
-    };
+        const fetchData = async () => {
+            try {
+              const token = authUserToken;
+              const config = {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              };
+      
+              const customerResponse = await axios.get('http://localhost:8080/api/customerDetails', config);
+              setCustomerCount(customerResponse.data);
+      
+              const sellerResponse = await axios.get('http://localhost:8080/api/sellerDetails', config);
+              setSellerCount(sellerResponse.data);
+      
+              const serviceResponse = await axios.get('http://localhost:8080/api/requests', config);
+              setServiceCount(serviceResponse.data);
+      
+              const allSellerResponse = await axios.get('http://localhost:8080/api/allSellerDetails', config);
+              setSellers(allSellerResponse.data);
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
     fetchData();
       }, []);
     return (
