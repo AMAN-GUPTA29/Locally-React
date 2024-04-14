@@ -14,17 +14,8 @@ import ChaitanyaROUTES_ from "./chaitanya-component/ChaitanyaROUTES_";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ConsumerLogin from "./pages/consumerlogin";
-import AdminLand from "./admin/adminland";
-import Adminbroadcast from './admin/adminbroadcast';
-import Customer from "./admin/customer";
-import Worker from "./admin/worker";
-import Requests from './admin/requests';
-import AdminRegister from './admin/adminRegister';
-
-import Nav from './admin/nav';
-import Photos from './admin/photos';
-import AdminLogin from './admin/adminLogin';
-
+import adminRoutes from "./admin/adminRoutes";
+// import { AuthProvider } from "./AuthContext";
 
 // import { Link,Routes,Route } from 'react-router-dom';
 // import { Services } from './Services';
@@ -63,15 +54,8 @@ function App() {
         ...varunRoutes,
         ...pranavRoutes,
         ...ChaitanyaROUTES_,
-        { path: "/adminLogin", element: <AdminLogin /> },
-        { path: "/adminRegister", element: <AdminRegister /> },
-        { path: "/adminland", element: <AdminLand /> },
-        { path: "/adminbroadcast", element: <Adminbroadcast /> },
-        { path: "/admincustomer", element: <Customer /> },
-        { path: "/adminworker", element: <Worker /> },
-        {path:"/nav",element:<Nav/>},
-        {path:"/photos",element:<Photos/>},
-        {path:"/requests",element:<Requests/>},
+        ...adminRoutes
+        
         // { path: "/ContactUs", element: <ContactUs /> },
         // { path: "/wishlist", element: <WishlistPage /> },
         // { path: "/instructor", element: <Instructor /> },
@@ -94,6 +78,9 @@ function App() {
   return (
     <>
       <RouterProvider router={router}></RouterProvider>
+      {/* <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>        
+      </AuthProvider> */}
     </>
   );
 }

@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import axios from "axios";
+import { useAuth } from "../AuthContext";
 
 export default function Line() {
+  const { authUserToken } = useAuth();
   const [registrationData, setRegistrationData] = useState({ customers: [], sellers: [] });
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/getRegistrationTimes")
-      .then((response) => {
-        setRegistrationData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching registration times:", error);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${authUserToken}`,
+          },
+        };
 
+        const response = await axios.get("http://localhost:8080/api/getRegistrationTimes", config);
+        setRegistrationData(response.data);
+      } catch (error) {
+        console.error("Error fetching registration times:", error);
+      }
+    };
+
+    fetchData();
+  }, [authUserToken]);
   const state = {
     series: [
       {

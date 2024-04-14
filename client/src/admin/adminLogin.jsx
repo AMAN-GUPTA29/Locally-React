@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from './adminimages/login_bg.jpg'; 
+import { useAuth } from '../AuthContext';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
+  const {login} = useAuth();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -59,10 +61,9 @@ const AdminLogin = () => {
         });
   
         const data = await response.json();
-        console.log(data)
   
         if (data.success) {
-          console.log(response)
+          login(data.token);
           navigate('/adminland');
         } else {
           console.log("else")
